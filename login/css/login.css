@@ -62,8 +62,6 @@ h2 {
   margin-bottom: 20px;
 }
 
-/*  */
-
 .register {
   text-decoration: none !important;
   color: green;
@@ -73,6 +71,7 @@ h2 {
   text-decoration: none !important;
   color: red;
 }
+
 .register:hover,
 .forgot:hover {
   text-decoration: none !important;
@@ -84,4 +83,137 @@ h2 {
   color: #333;
   display: block;
   margin-bottom: 5px;
+}
+
+/* ====================== TOAST NOTIFICATION ====================== */
+.toast {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background: #333;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  z-index: 9999;
+  font-size: 14px;
+  animation: fadeInOut 3s ease;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* ====================== MODAL OVERLAY ====================== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9998;
+}
+
+/* ====================== MODAL BOX ====================== */
+.modal-box {
+  background: white;
+  padding: 25px 20px;
+  border-radius: 12px;
+  width: 320px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+/* ====================== MODAL ACTION BUTTONS ====================== */
+.modal-actions button {
+  margin: 10px 5px;
+  padding: 8px 16px;
+  font-weight: 500;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.modal-actions button:first-child {
+  background-color: #007bff;
+  color: white;
+}
+
+.modal-actions button:last-child {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+.modal-actions button:hover {
+  opacity: 0.9;
+}
+
+/* ====================== INPUT FIELDS IN MODAL ====================== */
+.input-modal {
+  width: 100%;
+  padding: 10px 12px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.input-wrapper {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.input-wrapper label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #333;
+}
+
+.input-modal:focus {
+  border-color: #007bff;
+}
+
+/* Styled button */
+.btn-update-password {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-update-password:hover {
+  background-color: #0056b3;
+}
+
+/* ====================== RESPONSIVE HIDE BG IMAGE ====================== */
+@media (max-width: 767px) {
+  .col-md-6.bg-image {
+    display: none !important;
+  }
+
+  .login-left {
+    max-width: 100%;
+  }
 }

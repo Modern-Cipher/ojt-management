@@ -39,7 +39,6 @@ if (isset($_SESSION["user_id"]) && isset($_SESSION["role"])) {
 
         .form-group input {
             font-size: 16px;
-            /* border-radius: 8px;  Remove rounded corners */
             padding: 10px;
             border: 1px solid #ccc;
             box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
@@ -49,7 +48,6 @@ if (isset($_SESSION["user_id"]) && isset($_SESSION["role"])) {
         .btn-primary {
             background-color: green !important;
             border-color: green !important;
-            /* border-radius: 8px; Remove rounded corners */
             padding: 12px 20px;
             font-size: 15px;
             font-weight: 500;
@@ -65,7 +63,9 @@ if (isset($_SESSION["user_id"]) && isset($_SESSION["role"])) {
                     <img src="../resources/siplogo.png" class="logo" alt="User Icon">
                     <h2>Student Internship Program Management System</h2>
                     <p class="text-muted mb-4">Admin / Coordinator / Trainer / Student Login</p>
-                    <form action="authenticate.php" method="POST">
+                    
+                    <!-- ✅ Updated: Removed action, added id for JS -->
+                    <form id="loginForm" method="POST">
                         <div class="form-group mb-3">
                             <input id="username" type="text" name="username" placeholder="Username / Email Address"
                                 class="form-control border-0 shadow-sm px-4" required>
@@ -89,9 +89,14 @@ if (isset($_SESSION["user_id"]) && isset($_SESSION["role"])) {
             <div class="vertical-line"></div>
         </div>
     </div>
+
+    <!-- JS Scripts -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    <!-- ✅ New login JS (handles AJAX, toast, modal, password reset) -->
+    <script src="../login/js/login.js"></script>
 </body>
 
 </html>

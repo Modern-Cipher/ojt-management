@@ -12,11 +12,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("ss", $username, $username);
     $stmt->execute();
     $result = $stmt->get_result();
-    
+
     if ($result->num_rows == 1) {
         $user = $result->fetch_assoc();
-        
+
+        // Block if account is disabled
+        if ($user["users_account"] === "disabled") {
+            echo "<script>
+                alert('Your account is disabled. Please contact your administrator.');
+                window.location.href = 'login.php';
+            </script>";
+            exit();
+        }
+
         if (password_verify($password, $user["password"])) {
+            // Update chat_stats and time_in
+            $conn->query("UPDATE users SET chat_stats = 'online', time_in = NOW() WHERE users_id = " . $user['users_id']);
+
             // Generate a unique session ID
             session_regenerate_id(true);
             $session_id = session_id();
@@ -25,8 +37,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $institute = $user["institute"];
             $username = $user["username"];
 
-            // Store session in DB, but DON'T delete existing ones (to allow multiple users)
-            $session_data = json_encode(["user_id" => $user_id, "role" => $user_role, "institute" => $institute, "username" => $username]);
+            // Store session in DB
+            $session_data = json_encode([
+                "user_id" => $user_id,
+                "role" => $user_role,
+                "institute" => $institute,
+                "username" => $username
+            ]);
 
             $insertSession = "INSERT INTO sessions (sessions_id, users_id, session_data) VALUES (?, ?, ?)";
             $stmt = $conn->prepare($insertSession);

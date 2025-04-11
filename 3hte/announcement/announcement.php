@@ -63,10 +63,10 @@ $usernameDisplay = !empty($user['fname']) ? htmlspecialchars($user['fname']) : h
             </div>
 
             <div class="d-flex align-items-center topbar-right">
-                <div class="notification-container" data-bs-toggle="modal" data-bs-target="#notificationModal">
+                <!-- <div class="notification-container" data-bs-toggle="modal" data-bs-target="#notificationModal">
                     <i class="fa-solid fa-bell text-warning fs-5 notification-icon"></i>
                     <span class="notification-badge">99</span>
-                </div>
+                </div> -->
 
                 <div class="dropdown">
                     <div class="d-flex align-items-center dropdown-toggle" id="userDropdown" data-bs-toggle="dropdown">
