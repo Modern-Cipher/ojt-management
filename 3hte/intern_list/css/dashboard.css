@@ -1,0 +1,174 @@
+/* ========================= */
+/* Dashboard Grid Layout beside Sidebar */
+/* ========================= */
+
+.parent {
+  margin-left: 80px; /* Match the sidebar width */
+  padding: 20px;
+  max-width: calc(100% - 80px);
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(12, auto);
+  grid-gap: 10px;
+}
+
+/* Grid Area Assignments */
+.div1 {
+  grid-area: 1 / 1 / 13 / 7;
+}
+.div2 {
+  grid-area: 1 / 7 / 13 / 13;
+}
+.div3 {
+  grid-area: 1 / 1 / 2 / 7;
+}
+.div4 {
+  grid-area: 2 / 1 / 4 / 7;
+}
+.div5 {
+  grid-area: 4 / 1 / 6 / 7;
+}
+.div6 {
+  grid-area: 6 / 1 / 8 / 7;
+}
+.div7 {
+  grid-area: 8 / 1 / 10 / 7;
+}
+.div8 {
+  grid-area: 10 / 1 / 12 / 7;
+}
+.div9 {
+  grid-area: 1 / 7 / 2 / 13;
+}
+.div10 {
+  grid-area: 2 / 7 / 13 / 13;
+}
+
+/* Cards Styling */
+.div4,
+.div10 {
+  padding: 10px;
+}
+
+.card {
+  width: 100%;
+}
+
+/* Search container fixed on top of left column */
+.div1 {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-container {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: white;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+/* Scrollable area under search bar */
+.student-list-scroll {
+  flex-grow: 1;
+  overflow-y: auto;
+  max-height: calc(100vh - 220px); /* adjust for header + search */
+  padding-right: 5px;
+}
+
+.student-list-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.student-list-scroll::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 4px;
+}
+
+.search-container input {
+  font-size: 0.9rem;
+  padding: 6px 10px;
+}
+
+.card img {
+  object-fit: cover;
+  border: 1px solid #ccc;
+}
+
+.student-profile-img {
+    object-fit: cover;
+    border: 2px solid #ccc;
+  }
+  
+
+/* Icon buttons inside documents */
+/* Rectangular outline-style button for icons */
+.btn-outline-icon {
+  border: 1px solid #ccc;
+  background-color: white;
+  color: #333;
+  padding: 6px 10px;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Hover effect: blue background + white icon */
+.btn-outline-icon:hover {
+  background-color: #0d6efd;
+  color: white;
+  border-color: #0d6efd;
+}
+
+/* Hover color */
+.btn-icon:hover {
+  background-color: #0d6efd;
+  color: white;
+  border-color: #0d6efd;
+}
+
+.student-card.active-student {
+    border: 2px solid #0d6efd; /* Bootstrap primary color */
+    background-color: #f0f8ff;
+}
+
+
+
+/* Responsive Fixes for Grid Container */
+@media (max-width: 768px) {
+  .parent {
+    margin-left: 70px;
+    max-width: calc(100% - 70px);
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+
+  /* Stack items vertically */
+  .div1,
+  .div2,
+  .div3,
+  .div4,
+  .div5,
+  .div6,
+  .div7,
+  .div8,
+  .div9,
+  .div10 {
+    grid-area: unset;
+  }
+}
+
+@media (max-width: 610px) {
+  .parent {
+    margin-left: 65px;
+    max-width: calc(100% - 65px);
+  }
+}
+
+@media (max-width: 480px) {
+  .parent {
+    margin-left: 60px;
+    max-width: calc(100% - 60px);
+  }
+}

@@ -1,0 +1,247 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+body {
+  font-family: "Poppins", sans-serif !important;
+}
+
+/* ========================= */
+/* Fixed Sidebar Styling */
+/* ========================= */
+.sidebar {
+  position: fixed;
+  top: 60px; /* Below the topbar */
+  left: 0;
+  width: 80px; /* Fixed small width */
+  height: calc(100vh - 60px); /* Ensures full height */
+  background-color: white;
+  border-right: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 10px;
+  overflow-y: auto;
+  z-index: 1000; /* Ensure sidebar is clickable */
+}
+
+/* Sidebar Menu */
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.sidebar-menu li {
+  text-align: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+}
+
+/* Sidebar Clickable Icons */
+.sidebar-menu li a {
+  text-decoration: none;
+  color: #333;
+  font-size: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s, transform 0.2s;
+  padding: 12px 0;
+  position: relative;
+  z-index: 1001; /* Ensure icons are clickable */
+}
+
+/* Hover Effect */
+.sidebar-menu li a:hover {
+  background-color: #f0f0f0;
+  transform: scale(1.1);
+}
+
+/* Sidebar Icons */
+.sidebar-menu li a i {
+  font-size: 1.6rem;
+}
+
+/* Ensure Sidebar is Scrollable */
+.sidebar {
+  overflow-y: auto;
+  scrollbar-width: thin; /* For Firefox */
+}
+
+/* Scrollbar Styling */
+.sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Sidebar Tooltip Styling */
+.tooltip {
+  position: absolute !important;
+}
+
+/* Tooltip Styling */
+.tooltip-inner {
+  font-size: 0.75rem; /* Smaller text */
+  background-color: #222; /* Dark background */
+  color: white; /* White text */
+  border-radius: 5px;
+  padding: 6px 10px;
+}
+
+/* Tooltip Arrow */
+.tooltip-arrow {
+  border-right-color: #222 !important;
+}
+
+/* Ensure Tooltip Appears Outside Sidebar */
+.sidebar-menu a {
+  position: relative;
+}
+
+/* Fix Hover Issues */
+.sidebar-menu a:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+/* SUB ITEM LEFTSIDE BAR  #################################################################################### */
+/* Ensure Tooltip is Rounded */
+/* .tooltip {
+  font-size: 14px;
+  border-radius: 6px !important;
+  background-color: rgba(0, 0, 0, 0.85);
+  padding: 5px 10px;
+}
+
+/* Tooltip Arrow */
+/* .tooltip .tooltip-arrow {
+  display: block;
+  width: 0;
+  height: 0;
+  position: absolute;
+  border-style: solid;
+  border-width: 5px;
+  border-color: transparent;
+} */ 
+.sidebar-menu li {
+  position: relative;
+  padding: 10px;
+}
+
+/* Main Menu Item */
+.sidebar-menu .menu-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+  color: #333;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.sidebar-menu .menu-toggle:hover {
+  background-color: #f0f0f0;
+}
+
+/* Toggle Icon */
+.toggle-icon {
+  font-size: 14px;
+  color: #666;
+  transition: transform 0.3s ease;
+}
+
+/* Expanded State */
+.sidebar-menu .menu-toggle[aria-expanded="true"] .toggle-icon {
+  transform: rotate(180deg);
+}
+
+/* Sub-Menu Items */
+.sub-menu {
+  list-style-type: none;
+  padding-left: 2px;
+}
+
+.sub-menu li {
+  padding: 5px 10px;
+}
+
+.sub-menu a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #555;
+  padding: 8px;
+  border-radius: 5px;
+}
+
+.sub-menu a:hover {
+  background-color: #eaeaea;
+}
+
+/* Adjust SVG Icons */
+.sidebar-menu svg {
+  margin-right: 10px;
+}
+
+/* ========================= */
+/* Responsive Sidebar Fix (Small Screens) */
+/* ========================= */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 70px;
+  }
+
+  /* ✅ Prevent Sidebar Overlapping Content */
+  .dashboard-container {
+    margin-left: 70px; /* Adjust dashboard to avoid overlap */
+  }
+}
+
+@media (max-width: 610px) {
+  .sidebar {
+    width: 65px; /* Slightly smaller for compact view */
+  }
+
+  /* ✅ Announcements move to the top */
+  .dashboard-container {
+    flex-direction: column;
+  }
+
+  .announcements {
+    order: -1; /* Move above the dashboard */
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+    border-left: none;
+    padding-bottom: 15px;
+  }
+
+  .dashboard-content {
+    order: 2;
+    margin-left: 0;
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    width: 60px;
+  }
+
+  /* ✅ Further adjust dashboard margin */
+  .dashboard-container {
+    margin-left: 60px;
+  }
+}

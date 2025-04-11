@@ -1,0 +1,165 @@
+/* ========================= */
+/* Dashboard Grid Layout beside Sidebar */
+/* ========================= */
+.parent {
+  margin-left: 80px;
+  padding: 20px;
+  max-width: calc(100% - 80px);
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: auto;
+  grid-gap: 10px;
+  height: calc(100vh - 100px);
+}
+
+/* Three Columns */
+.div1,
+.div2,
+.div3 {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+.div1 {
+  grid-area: 1 / 1 / 2 / 5;
+}
+.div2 {
+  grid-area: 1 / 5 / 2 / 9;
+}
+.div3 {
+  grid-area: 1 / 9 / 2 / 13;
+}
+
+/* ========================= */
+/* Shared Search Container */
+/* ========================= */
+.search-container {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: white;
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+}
+.search-container input {
+  font-size: 0.85rem;
+  padding: 5px 8px;
+}
+
+/* ========================= */
+/* Scrollable Containers */
+/* ========================= */
+.coordinator-list-scroll,
+.student-list-scroll {
+  flex-grow: 1;
+  overflow-y: scroll;
+  padding-right: 5px;
+}
+
+.coordinator-list-scroll::-webkit-scrollbar,
+.student-list-scroll::-webkit-scrollbar,
+.info-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.coordinator-list-scroll::-webkit-scrollbar-thumb,
+.student-list-scroll::-webkit-scrollbar-thumb,
+.info-scroll::-webkit-scrollbar-thumb {
+  background-color: #bbb;
+  border-radius: 6px;
+}
+
+/* ========================= */
+/* Cards and Images */
+/* ========================= */
+.card {
+  width: 100%;
+  border-radius: 6px;
+  font-size: 0.85rem;
+}
+.card-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.card-text {
+  font-size: 0.8rem;
+}
+.card img {
+  object-fit: cover;
+  border: 1px solid #ccc;
+}
+.student-profile-img {
+  object-fit: cover;
+  border: 2px solid #ccc;
+}
+
+.student-card.active-student {
+  border: 2px solid #0d6efd;
+  background-color: #f0f8ff;
+}
+
+/* ========================= */
+/* Buttons */
+/* ========================= */
+.btn-outline-icon {
+  border: 1px solid #ccc;
+  background-color: white;
+  color: #333;
+  padding: 4px 8px;
+  font-size: 0.8rem;
+  border-radius: 6px;
+  transition: all 0.2s ease-in-out;
+}
+.btn-outline-icon:hover {
+  background-color: #0d6efd;
+  color: white;
+  border-color: #0d6efd;
+}
+
+.coordinator-card.active-student {
+  border: 2px solid #0d6efd;
+  background-color: #f0f8ff;
+}
+
+/* ========================= */
+/* Scrollable Info Column */
+/* ========================= */
+.info-scroll {
+  flex-grow: 1;
+  overflow-y: auto;
+  max-height: calc(100vh - 170px);
+  padding-right: 5px;
+}
+
+/* Section titles in info panel */
+.div3 h5,
+.div3 h6 {
+  font-size: 0.95rem;
+}
+.div3 p,
+.div3 li {
+  font-size: 0.85rem;
+}
+
+/* ========================= */
+/* Responsive Layout */
+/* ========================= */
+@media (max-width: 992px) {
+  .parent {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    height: auto;
+  }
+
+  .div1,
+  .div2,
+  .div3 {
+    grid-area: unset;
+    height: auto;
+  }
+
+  .coordinator-list-scroll,
+  .student-list-scroll {
+    max-height: 300px;
+  }
+}

@@ -1,0 +1,38 @@
+<?php
+session_start();
+include("../../0config/database.php");
+
+if (!isset($_SESSION['user_id'])) {
+    echo json_encode(["error" => "Unauthorized"]);
+    exit();
+}
+
+$user_id = $_SESSION['user_id'];
+
+// Get the user's institute
+$getInstitute = $conn->prepare("SELECT institute FROM users WHERE users_id = ?");
+$getInstitute->bind_param("i", $user_id);
+$getInstitute->execute();
+$getInstitute->bind_result($institute);
+$getInstitute->fetch();
+$getInstitute->close();
+
+// Now fetch students with the same institute
+$sql = "SELECT users_id, image_profile, fname, lname, role, course, year_section 
+        FROM users 
+        WHERE role = 'student' AND institute = ? AND ojt_stats = 'deployed'";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("s", $institute);
+$stmt->execute();
+$result = $stmt->get_result();
+
+$students = [];
+while ($row = $result->fetch_assoc()) {
+    $row['image_profile'] = !empty($row['image_profile']) 
+        ? "../../upload_profile/" . $row['image_profile'] 
+        : "../../upload_profile/siplogo.png";
+    $students[] = $row;
+}
+
+echo json_encode($students);
+?>

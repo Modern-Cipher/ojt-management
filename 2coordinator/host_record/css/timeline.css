@@ -1,0 +1,128 @@
+.timeline {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-left: 50px;
+  }
+  
+  .timeline::before {
+    content: "";
+    position: absolute;
+    top: 15px;
+    bottom: 0;
+    left: 20px;
+    width: 2px;
+    background-color: #d3d3d3;
+  }
+  
+  .timeline-item {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+  }
+  
+  .timeline-left {
+    position: relative;
+    margin-right: 15px;
+  }
+  
+  .timeline-dot {
+    width: 30px;
+    height: 30px;
+    background-color: #dc3545;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    position: absolute;
+    left: -43px;
+    top: 0;
+    transform: translateY(50%);
+    z-index: 2;
+  }
+  
+  .timeline-dot i {
+    font-size: 14px;
+  }
+
+  .timeline-dot.success {
+    background-color: #198754; /* Bootstrap success */
+    color: #fff;
+}
+
+.timeline-dot.secondary {
+    background-color: #6c757d; /* Bootstrap secondary */
+    color: #fff;
+}
+
+.timeline-dot.danger {
+    background-color: #dc3545; /* Bootstrap danger */
+    color: #fff;
+}
+
+  .timeline-dot {
+    transition: background-color 0.3s ease;
+  }
+  
+  
+  .file-card {
+    background: #fff;
+    border-radius: 8px;
+    width: 100%;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .profile-img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .commenter-img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+  }
+  .file-card-actions .btn-outline-dark:hover i {
+    color: white;
+}
+
+
+.file-card .form-check-input {
+    width: 2rem;
+    height: 1rem;
+}
+
+.file-card .badge {
+    padding: 0.4em 0.7em;
+    font-size: 0.75rem;
+}
+
+.file-card a.btn-outline-dark:hover i {
+    color: white;
+}
+
+.file-card a.btn-outline-dark:hover {
+    background-color: #212529;
+    color: white;
+}
+.filename {
+    margin-bottom: 0.3rem;
+}
+
+.timestamp {
+    display: block;
+}
+
+
+.dropdown-edit {
+    background: #fff;
+    border: 1px solid #ced4da;
+    padding: 5px;
+    border-radius: 5px;
+    z-index: 9999;
+}

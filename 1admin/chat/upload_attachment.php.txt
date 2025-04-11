@@ -1,0 +1,40 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['user_id'])) {
+    echo json_encode(["status" => "error", "message" => "Unauthorized"]);
+    exit();
+}
+
+$uploadDir = "../../attachment/";
+$allowedExtensions = ['jpeg', 'jpg', 'png', 'pdf', 'csv', 'txt', 'url'];
+
+if (!isset($_FILES['attachment']) || $_FILES['attachment']['error'] !== 0) {
+    echo json_encode(["status" => "error", "message" => "No file uploaded"]);
+    exit();
+}
+
+$file = $_FILES['attachment'];
+$fileExt = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
+
+if (!in_array($fileExt, $allowedExtensions)) {
+    echo json_encode(["status" => "error", "message" => "Invalid file type"]);
+    exit();
+}
+
+$random = bin2hex(random_bytes(3)); // 6 characters
+$baseName = pathinfo($file['name'], PATHINFO_FILENAME);
+$safeName = preg_replace('/[^A-Za-z0-9_\-]/', '_', $baseName); // remove special chars
+$finalName = $safeName . '_' . $random . '.' . $fileExt;
+$targetPath = $uploadDir . $finalName;
+
+if (move_uploaded_file($file['tmp_name'], $targetPath)) {
+    echo json_encode([
+        "status" => "success",
+        "file" => $finalName,
+        "url" => $targetPath
+    ]);
+} else {
+    echo json_encode(["status" => "error", "message" => "Failed to upload"]);
+}
+?>

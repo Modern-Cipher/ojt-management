@@ -1,0 +1,42 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+body {
+    font-family: "Poppins", sans-serif !important;
+}
+
+/* ✅ Graphs Section (Now Without a Card) */
+.dashboard-graphs {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    padding: 0; /* Removes extra spacing */
+}
+
+/* ✅ Keep Title Left Aligned */
+.dashboard-graphs h5 {
+    text-align: left;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    padding-left: 15px;
+}
+
+
+
+/* ✅ Graph Container - Left Aligned */
+.graph-container {
+    width: 100%;
+    max-width: 600px; /* Keeps it from stretching too wide */
+    margin-bottom: 15px; /* Adds spacing between graphs */
+}
+
+/* ✅ Responsive Adjustments */
+@media (max-width: 768px) {
+    .dashboard-grid {
+        justify-content: center;
+    }
+    .graph-container {
+        max-width: 100%;
+    }
+}

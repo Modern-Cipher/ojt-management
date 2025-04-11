@@ -1,0 +1,224 @@
+/* ✅ Full-page structured layout */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #555;
+}
+
+/* ✅ Main Container */
+.container {
+    width: 90%;
+    max-width: 450px; /* Adjust width */
+    text-align: center;
+}
+
+/* ✅ Back Button */
+.back-btn {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 16px;
+    color: black;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    /* font-weight: bold; */
+}
+
+.back-btn:hover {
+    color: #333;
+}
+
+/* ✅ Title & Description */
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.description {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+/* ✅ Form Container */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+/* ✅ Labels */
+label {
+    display: block;
+    font-weight: bold;
+    font-size: 14px;
+    text-align: left;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+/* ✅ Input Fields */
+.input-field {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    width: 100%;
+}
+
+/* ✅ Input with Button (GET Button beside Email Field) */
+.input-group {
+    display: flex;
+    width: 25vw;
+}
+
+.input-group input {
+    flex: 3; /* Give more space to input */
+}
+
+.get-btn {
+    flex: 1;
+    background: green;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.get-btn:hover {
+    background: darkgreen;
+}
+
+/* ✅ Resend Timer Text */
+.resend-text {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 15px;
+}
+
+/* ✅ OTP Input Field (Same width as Email + GET button row) */
+.otp-input {
+    width: 24vw;
+}
+
+/* ✅ Reset Button (Same width as Email row) */
+.reset-btn {
+    background: green;
+    color: white;
+    padding: 14px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 25vw;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.reset-btn:hover {
+    background: darkgreen;
+}
+
+/* ✅ Responsive Fixes for 768px */
+@media screen and (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
+    
+    .back-btn {
+        font-size: 14px;
+        top: 15px;
+        left: 15px;
+    }
+
+    /* ✅ Keep proportions but slightly smaller */
+    .input-group {
+        width: 28vw;
+    }
+
+    .otp-input {
+        width: 27vw;
+    }
+
+    .reset-btn {
+        width: 28vw;
+    }
+}
+
+/* ✅ Responsive Fixes for 480px */
+@media screen and (max-width: 480px) {
+    .container {
+        width: 95%;
+        padding: 10px;
+    }
+
+    .back-btn {
+        font-size: 14px;
+        top: 15px;
+        left: 15px;
+    }
+
+    /* ✅ Keep button aligned properly */
+    .input-group {
+        width: 35vw;
+    }
+
+    .otp-input {
+        width: 34vw;
+    }
+
+    .reset-btn {
+        width: 35vw;
+    }
+}
+
+/* ✅ Responsive Fixes for 300px */
+@media screen and (max-width: 300px) {
+    .container {
+        width: 100%;
+        padding: 5px;
+    }
+
+    .back-btn {
+        font-size: 12px;
+        top: 10px;
+        left: 10px;
+    }
+
+    /* ✅ Make everything smaller to fit */
+    .input-group {
+        width: 90%;
+        flex-direction: column;
+    }
+
+    .input-group input {
+        flex: none;
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+    .get-btn {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .otp-input {
+        width: 90%;
+    }
+
+    .reset-btn {
+        width: 90%;
+    }
+}

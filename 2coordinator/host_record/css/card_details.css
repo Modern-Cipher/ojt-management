@@ -1,0 +1,65 @@
+.custom-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  border-radius: 10px;
+  padding: 15px 20px;
+}
+
+.left-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.left-section .profile-image {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #ddd;
+}
+
+.text-info .establishment {
+  font-weight: 400;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.text-info .fullname {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.right-section {
+  text-align: right;
+}
+
+.right-section .role {
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.right-section .designation {
+  font-size: 0.85rem;
+  color: #777;
+}
+
+/* Optional: Card Hover Effect */
+.custom-card:hover {
+  background-color: #f9f9f9;
+  transition: 0.3s ease;
+}
+
+@media (max-width: 600px) {
+  .custom-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .right-section {
+    text-align: left;
+    margin-top: 10px;
+  }
+}

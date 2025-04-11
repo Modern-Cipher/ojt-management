@@ -1,0 +1,108 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+body {
+  font-family: "Poppins", sans-serif !important;
+}
+
+.parent {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(11, 1fr);
+  gap: 10px;
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 5px 20px 5px 0px; /* Default for 1920px */
+}
+
+.div3 {
+  grid-column: span 4 / span 4;
+  grid-column-start: 2;
+  grid-row-start: 2;
+}
+
+.div4 {
+  grid-column: span 4 / span 4;
+  grid-row: span 9 / span 9;
+  grid-column-start: 2;
+  grid-row-start: 3;
+}
+
+.div6 {
+  grid-column: span 7 / span 7;
+  grid-column-start: 6;
+  grid-row-start: 2;
+}
+
+.div7 {
+  grid-column: span 7 / span 7;
+  grid-row: span 9 / span 9;
+  grid-column-start: 6;
+  grid-row-start: 3;
+}
+
+/* Medium Screens (1600px ↓) */
+@media (max-width: 1919px) and (min-width: 1600px) {
+  .parent {
+    padding: 5px 20px 5px 0px;
+  }
+}
+
+/* Smaller Screens (1400px ↓) */
+@media (max-width: 1599px) and (min-width: 1200px) {
+  .parent {
+    padding: 5px 20px 5px 0px;
+  }
+}
+
+@media (max-width: 1080px) and (min-width: 770px) {
+    .parent {
+      padding: 20px 40px 20px 80px;
+    }
+  }
+
+/* Mobile & Tablet */
+@media (max-width: 768px) {
+  .parent {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    padding: 10px 20px 10px 90px;
+  }
+
+  .div3,
+  .div4,
+  .div6,
+  .div7 {
+    grid-column: span 12;
+    grid-column-start: auto;
+    grid-row-start: auto;
+  }
+}
+
+
+.scrollable-cards {
+    max-height: 80vh; /* adjust if needed */
+    overflow-y: auto;
+    padding-right: 5px; /* avoid scrollbar overlap */
+  }
+  
+  /* Hide scrollbar but allow scroll */
+  .scrollable-cards::-webkit-scrollbar {
+    width: 0px;
+  }
+  
+  .scrollable-cards {
+    -ms-overflow-style: none; /* IE/Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+  
+  .scrollable-cards::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+  }
+  
+
+  .custom-card.active {
+    border: 2px solid #41a841; /* Bootstrap success color */
+    background-color: #e6f4ea;
+  }
+  
+  

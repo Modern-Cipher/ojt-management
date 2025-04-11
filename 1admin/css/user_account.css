@@ -1,0 +1,172 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+body {
+  font-family: "Poppins", sans-serif !important;
+}
+
+/* ============================= */
+/* ✅ Dashboard Main Layout (Ensuring No Overlap) */
+/* ============================= */
+.dashboard-container {
+  display: flex;
+  flex-direction: column; /* ✅ Ensures stacking */
+  padding: 15px; /* Reduced padding */
+  width: 100%;
+  max-width: 1920px;
+  margin: auto;
+}
+
+/* ✅ Good Day Admin Fix */
+.dashboard-header {
+  width: 100%;
+  text-align: left;
+  padding: 10px 20px 5px 90px; /* ✅ Adjusted spacing */
+  font-size: 1rem; /* ✅ Smaller text */
+  font-weight: 500;
+  background: white;
+  margin-bottom: 5px;
+}
+
+/* General Tooltip Styling */
+[data-tooltip] {
+  position: relative;
+  cursor: pointer;
+}
+
+/* Tooltip Text */
+[data-tooltip]::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.85);
+  color: white;
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 5px;
+  text-align: left;
+  display: block;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease-in-out;
+  pointer-events: none;
+  z-index: 1000;
+
+  /* ✅ Smart Wrap: Allow longer text to wrap but keep short text in one line */
+  max-width: 200px; /* Limit width */
+  white-space: nowrap; /* Default: no wrapping */
+
+  /* ✅ Make longer tooltips wrap */
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+/* Show Tooltip on Hover */
+[data-tooltip]:hover::before {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Default Position (Above the Element) */
+[data-tooltip]::before {
+  bottom: 100%; /* Moves it above */
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 8px;
+}
+
+/* Arrow below tooltip */
+[data-tooltip]::after {
+  content: "";
+  position: absolute;
+  bottom: calc(100% - 2px);
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.85) transparent transparent transparent;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease-in-out;
+}
+
+/* Show Arrow on Hover */
+[data-tooltip]:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ✅ Fix Tooltip Wrapping Issue: Allow wrapping only if necessary */
+[data-tooltip][data-tooltip-length="long"]::before {
+  white-space: normal; /* Allows wrapping for long tooltips */
+  max-width: 250px; /* Adjust for longer text */
+}
+
+/* ============================ */
+/* ✅ Responsive Fixes for table */
+/* ============================= */
+
+/* ✅ 1366px - Two Cards Per Row */
+@media (max-width: 1366px) {
+  .dashboard-grid {
+    grid-template-columns: repeat(2, 1fr); /* ⬅️ 2 cards per row */
+  }
+}
+
+/* ✅ 992px - One Card Per Row */
+@media (max-width: 992px) {
+  .dashboard-grid {
+    grid-template-columns: repeat(1, 1fr); /* ⬅️ 1 card per row */
+  }
+}
+
+/* ============================= */
+/* ✅ Responsive Fixes (No Overlapping) */
+/* ============================= */
+@media (max-width: 1920px) {
+  .dashboard-grid {
+    grid-template-columns: repeat(4, 1fr); /* ⬅️ Reduce to 3 cards per row */
+  }
+}
+@media (max-width: 1366px) {
+  .dashboard-grid {
+    grid-template-columns: repeat(3, 1fr); /* ⬅️ Reduce to 2 cards per row */
+  }
+}
+
+@media (max-width: 992px) {
+  .dashboard-grid {
+    grid-template-columns: repeat(2, 1fr); /* ⬅️ 1 card per row */
+    max-width: 100%; /* ⬅️ Make sure it stretches fully */
+  }
+
+  .dashboard-content {
+    max-width: 100%; /* ⬅️ Prevents shrinking */
+  }
+}
+
+/* ✅ Fix for 610px (Move Announcements to Top) */
+@media (max-width: 610px) {
+  .dashboard-container {
+    flex-direction: column;
+  }
+
+  .dashboard-content {
+    order: 2;
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+  }
+
+  .dashboard-header {
+    order: -2;
+    width: 100%;
+    text-align: left;
+    padding-bottom: 10px;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: repeat(1, 1fr);
+    width: 100%;
+    max-width: 400px;
+    justify-content: center;
+  }
+}

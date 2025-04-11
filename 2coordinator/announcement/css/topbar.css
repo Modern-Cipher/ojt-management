@@ -1,0 +1,197 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+body {
+    font-family: "Poppins", sans-serif !important;
+}
+
+
+/* ========================= */
+/* Sticky Topbar (Fixed at Top) */
+/* ========================= */
+.topbar-container {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background-color: white;
+  z-index: 1050;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+/* Push the body content below the sticky topbar */
+body {
+  margin: 0;
+  padding-top: 60px !important;
+  overflow-x: hidden;
+}
+
+
+/* Notification Bell Container */
+.notification-container {
+  position: relative;
+  display: inline-block;
+  margin-right: 15px; /* Adds spacing from profile icon */
+}
+
+/* Fix Notification Bell Size */
+.notification-icon {
+  font-size: 1.5rem;
+  position: relative;
+}
+
+/* Adjust Badge Position (Perfect Placement) */
+.notification-badge {
+  position: absolute;
+  top: -6px; /* Moves badge slightly up */
+  right: -6px; /* Moves badge slightly right */
+  font-size: 10px; /* Smaller font */
+  width: 15px;
+  height: 15px;
+  line-height: 15px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: red;
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+}
+
+/* ======================== */
+/* Logo and Profile Styles */
+/* ======================== */
+.logo {
+  height: 30px;
+  width: auto;
+}
+
+.profile-img {
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ddd;
+}
+
+/* ======================== */
+/* System Name Formatting */
+/* ======================== */
+.system-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: left;
+  max-width: 250px;
+  white-space: normal;
+  margin-bottom: 0;
+  display: block;
+  line-height: 1.2;
+}
+/* ======================== */
+/* Responsive Layout: 650px */
+/* ======================== */
+@media (max-width: 650px) {
+  .topbar-container {
+    flex-direction: row; /* Keep everything in one row */
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 10px; /* Adjust padding */
+    height: 60px; /* Ensure consistent height */
+  }
+
+  .logo {
+    display: inline-block;
+    height: 25px; /* Slightly smaller */
+    margin-right: 8px;
+  }
+
+  .system-name {
+    font-size: 0.85rem;
+    white-space: nowrap; /* Prevent it from wrapping */
+    text-align: left !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .topbar-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px; /* Ensure spacing */
+  }
+
+  /* Ensure sidebar remains visible */
+  .sidebar {
+    display: flex !important;
+  }
+}
+
+/* ======================== */
+/* Responsive Layout: 485px (Hide Logo & System Name) */
+/* ======================== */
+@media (max-width: 485px) {
+  .logo,
+  .system-name {
+    display: none !important;
+  }
+
+  .topbar-container {
+    justify-content: flex-end;
+    padding: 5px 10px; /* Adjust padding */
+    height: 60px;
+  }
+
+  .topbar-right {
+    gap: 5px; /* Reduce spacing slightly */
+  }
+
+  /* Ensure sidebar remains visible */
+  .sidebar {
+    display: flex !important;
+  }
+}
+
+/* ======================== */
+/* Responsive Layout: 484px */
+/* ======================== */
+@media (max-width: 484px) {
+  .topbar-container {
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 5px 10px;
+    height: 60px;
+  }
+
+  .logo,
+  .system-name {
+    display: none !important;
+  }
+
+  .topbar-right {
+    justify-content: flex-end;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .profile-img {
+    height: 30px;
+    width: 30px;
+  }
+
+  .notification-icon {
+    font-size: 1rem;
+  }
+
+  /* Ensure sidebar remains visible */
+  .sidebar {
+    display: flex !important;
+  }
+}

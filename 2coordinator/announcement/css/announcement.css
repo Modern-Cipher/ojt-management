@@ -1,0 +1,407 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+body {
+  font-family: "Poppins", sans-serif !important;
+}
+
+/* General Tooltip Styling */
+[data-tooltip] {
+  position: relative;
+  cursor: pointer;
+}
+
+/* Tooltip Text */
+[data-tooltip]::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.85);
+  color: white;
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 5px;
+  text-align: left;
+  display: block;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease-in-out;
+  pointer-events: none;
+  z-index: 1000;
+
+  /* ✅ Smart Wrap: Allow longer text to wrap but keep short text in one line */
+  max-width: 200px; /* Limit width */
+  white-space: nowrap; /* Default: no wrapping */
+
+  /* ✅ Make longer tooltips wrap */
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+/* Show Tooltip on Hover */
+[data-tooltip]:hover::before {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Default Position (Above the Element) */
+[data-tooltip]::before {
+  bottom: 100%; /* Moves it above */
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 8px;
+}
+
+/* Arrow below tooltip */
+[data-tooltip]::after {
+  content: "";
+  position: absolute;
+  bottom: calc(100% - 2px);
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.85) transparent transparent transparent;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease-in-out;
+}
+
+/* Show Arrow on Hover */
+[data-tooltip]:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ✅ Fix Tooltip Wrapping Issue: Allow wrapping only if necessary */
+[data-tooltip][data-tooltip-length="long"]::before {
+  white-space: normal; /* Allows wrapping for long tooltips */
+  max-width: 250px; /* Adjust for longer text */
+}
+
+/* ✅ Main Container */
+.announcements {
+  width: 90%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* ✅ Announcement Header */
+.announcement-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.manage-btn {
+  background: #363636;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+/* ✅ Announcement Profile (Now Matches Comment Layout) */
+.announcement-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 5px;
+}
+
+.announcement-profile img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+/* ✅ Announcement Info */
+.announcement-info {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ✅ Role */
+.announcement-role {
+  font-size: 12px;
+  color: gray;
+}
+
+/* ✅ Timestamp */
+.announcement-time {
+  font-size: 12px;
+  color: gray;
+}
+
+/* ✅ Title & Content */
+.announcement-title {
+  font-weight: normal;
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.announcement-text {
+  color: #333;
+  font-size: 14px;
+}
+
+/* ✅ Separator */
+.separator {
+  border: 0;
+  height: 1px;
+  background: #ddd;
+  margin: 15px 0;
+}
+
+/* ✅ Comment Section */
+.comment-section {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* ✅ Comment Section Label */
+.comment-label {
+  text-align: center;
+  font-weight: normal;
+  margin-bottom: 10px;
+}
+
+/* ✅ Comment Item */
+.comment-item {
+  display: flex;
+  flex-direction: column;
+  padding: 12px 0;
+  font-size: 0.9rem;
+  width: 100%;
+  position: relative;
+}
+
+/* ✅ Profile & Details */
+.comment-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 5px;
+  width: 100%;
+}
+
+.comment-profile img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+
+/* ✅ Role */
+.comment-role {
+  font-size: 12px;
+  color: gray;
+}
+
+/* ✅ Timestamp */
+.comment-time {
+  font-size: 12px;
+  color: gray;
+}
+
+.comment-details {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ✅ Adjusted Comment Text Alignment */
+.comment-text {
+  margin-left: 45px; /* Align text with the name/timestamp */
+  margin-top: 5px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+}
+
+/* ✅ Delete Button */
+.delete-comment {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #dc3545;
+  font-size: 1.2rem;
+}
+
+/* ✅ Comment Input Field */
+.comment-input {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 700px;
+  background: #f8f8f8;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  margin-top: 10px;
+}
+
+.comment-input input {
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 8px;
+  font-size: 0.9rem;
+  background: transparent;
+}
+
+.send-comment {
+  background: transparent;
+  color: #007bff;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+/* ✅ View All History Button */
+.view-history {
+  display: block;
+  text-align: right;
+  font-size: 0.85rem;
+  margin-top: 6px;
+  text-decoration: none;
+  color: #007bff;
+  cursor: pointer;
+}
+
+/* ✅ Hidden Extra Announcements */
+.extra-announcements {
+  display: none;
+  margin-top: 10px;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* ✅ Fade-in Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ✅ Responsive Fixes */
+@media (max-width: 768px) {
+  .announcement-container {
+    width: 100%;
+    padding: 0;
+  }
+
+  .announcement-item {
+    font-size: 0.85rem;
+  }
+
+  .comment-item {
+    flex-direction: column;
+  }
+
+  .comment-profile img {
+    width: 28px;
+    height: 28px;
+  }
+
+  .comment-input {
+    padding: 6px;
+  }
+
+  .comment-input input {
+    font-size: 0.85rem;
+  }
+
+  .comment-input button {
+    padding: 5px 8px;
+    font-size: 0.85rem;
+  }
+}
+
+/* ================================ */
+/* ✅ FULL RESPONSIVE FIXES */
+/* ================================ */
+
+/* ✅ Ensures it is fully visible at 1920px width */
+@media (min-width: 1920px) {
+  .announcement-container {
+    width: 600px;
+  }
+}
+
+/* ✅ Fix for 1366px width to ensure FULL visibility */
+@media (max-width: 1366px) {
+  .announcement-container {
+    width: 540px; /* Adjust width for this resolution */
+  }
+}
+
+/* ✅ Medium Screens (Ensures Proper Alignment) */
+@media (max-width: 1200px) {
+  .announcement-container {
+    width: 500px;
+  }
+}
+
+/* ✅ Ensures it stays visible until 768px */
+@media (max-width: 992px) {
+  .dashboard-main {
+    flex-direction: row;
+  }
+  .announcement-container {
+    width: 100%;
+  }
+}
+
+/* ✅ Keeps Announcement Fully Visible at 768px */
+@media (max-width: 768px) {
+  .announcement-container {
+    width: 100%;
+    padding: 10px;
+  }
+}
+
+/* ✅ Responsive Fix (610px & Below) */
+@media (max-width: 610px) {
+  .dashboard-main {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .announcement-container {
+    width: 100%;
+    padding: 12px;
+  }
+
+  .comment-item {
+    flex-direction: column;
+  }
+
+  .comment-item img {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+/* ✅ Smallest Screens (Mobile-Friendly) */
+@media (max-width: 480px) {
+  .announcement-container {
+    width: 100%;
+    padding: 8px;
+  }
+
+  .comment-item {
+    flex-direction: column;
+  }
+
+  .comment-item img {
+    width: 20px;
+    height: 20px;
+  }
+}

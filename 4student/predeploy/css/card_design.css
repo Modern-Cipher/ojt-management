@@ -1,0 +1,152 @@
+/* 📄 card_design.css */
+
+.dashboard-card {
+  border-radius: 10px;
+  background-color: #fff;
+  font-family: "Poppins", sans-serif;
+  font-size: 13px;
+  width: 100%;
+}
+
+.dashboard-card .card-header {
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 1px;
+  font-size: 14px;
+}
+
+.dashboard-card small {
+  font-size: 12px;
+  color: #777;
+}
+
+.dashboard-card input.form-control {
+  font-size: 13px;
+  padding: 6px 10px;
+}
+
+.dashboard-card .btn {
+  font-size: 12px;
+  padding: 5px 10px;
+}
+
+.dashboard-card .btn i {
+  font-size: 13px;
+}
+
+/* ⬇ Comment Box at the Bottom */
+.input-group input.form-control {
+  font-size: 13px;
+}
+
+.input-group .btn-dark i {
+  font-size: 14px;
+}
+
+/* ⬇ Toggle Comment Text */
+.dashboard-card .toggle-comment {
+  font-size: 13px;
+  color: #666;
+  transition: all 0.2s ease;
+}
+
+.dashboard-card .toggle-comment:hover {
+  text-decoration: underline;
+}
+
+/* ⬇ Scrollable Comment Box */
+.scrollable-comments {
+  max-height: 210px;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-right: 5px;
+}
+
+.scrollable-comments::-webkit-scrollbar {
+  display: none;
+}
+
+/* ⬇ Avatar */
+.comment-avatar {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+}
+
+/* ⬇ Comment Text Display */
+.comment-section {
+  font-size: 13px;
+}
+
+.comment-section strong {
+  font-size: 13px;
+}
+
+.comment-section small {
+  font-size: 11px;
+  color: #999;
+}
+
+.comment-section p {
+  font-size: 13px;
+  margin-top: 5px;
+}
+
+/* ⬇ Trash Icon Button */
+.comment-section .btn-outline-danger {
+  font-size: 12px;
+  padding: 3px 8px;
+  height: 28px;
+
+  /* 🟢 Comment Input Spacing */
+  #commentInput {
+    margin-top: 15px;
+  }
+
+  /* 🟢 Hide ugly scrollbar */
+  .scrollable-comments::-webkit-scrollbar {
+    width: 0px;
+  }
+  .scrollable-comments {
+    scrollbar-width: none;
+  }
+}
+
+/* 🔍 Search Bar Styling */
+.search-container {
+  width: 250px;
+}
+
+@media (max-width: 576px) {
+  .search-container {
+    width: 100%;
+    margin-top: 10px;
+  }
+}
+
+/* 
+.dashboard-card {
+    border-width: 2px !important;
+    border-radius: 12px;
+  }
+  
+  .border-success {
+    border-color: #198754 !important;
+  }
+  
+  .border-secondary {
+    border-color: #6c757d !important;
+  }
+  
+  .border-danger {
+    border-color: #dc3545 !important;
+  }
+  
+  .border-muted {
+    border-color: #ffffff !important;
+  }
+  
+  .bg-light {
+    background-color: #ffffff !important;
+  }
+   */

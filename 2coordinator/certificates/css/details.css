@@ -1,0 +1,71 @@
+/* Set static width and align to the right */
+.student-card {
+    width: 400px; /* Fixed width */
+    position: absolute;
+    right: 0;
+    top: 100px; /* Adjust as needed */
+    margin-right: 20px; /* Add spacing from the right */
+}
+
+/* Styling for the header */
+.card-header {
+    background-color: black;
+    color: white;
+    font-weight: normal;
+    text-align: center;
+}
+
+/* Profile picture */
+.profile-img2 {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: block;
+    margin: 10px auto;
+}
+
+/* Student name styling */
+.student-name {
+    text-align: center;
+    font-size: 18px;
+    font-weight: normal;
+}
+
+/* Styling for the details section */
+.info-section {
+    font-size: 14px;
+    padding: 5px 0;
+}
+
+/* Status text bold */
+.status {
+    font-weight: normal;
+    color: #333;
+}
+
+/* Link styling */
+.link-style {
+    margin-top: 20px;
+    color: rgb(58, 58, 58);
+    cursor: pointer;
+    /* text-decoration: underline; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    
+}
+
+/* Hide history section by default */
+.hidden {
+    display: none;
+}
+
+/* Ensure responsiveness */
+@media (max-width: 768px) {
+    .student-card {
+        width: 300px; /* Fixed width */
+        position: static;
+        margin: 0 auto; /* Center on smaller screens */
+    }
+}

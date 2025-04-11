@@ -1,0 +1,71 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+body {
+    font-family: "Poppins", sans-serif !important;
+}
+
+/* ✅ Full-page structured layout */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
+
+/* ✅ Main Container */
+.container {
+    width: 90%;
+    max-width: 450px;
+}
+
+/* ✅ Success Message */
+.message {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* ✅ Proceed to Login Button */
+.login-btn {
+    background: green;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-size: 14px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    width: 100%;
+    max-width: 250px;
+}
+
+.login-btn:hover {
+    background: darkgreen;
+}
+
+/* ✅ Responsive Fixes */
+@media screen and (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
+
+    .login-btn {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .container {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .login-btn {
+        width: 95%;
+    }
+}

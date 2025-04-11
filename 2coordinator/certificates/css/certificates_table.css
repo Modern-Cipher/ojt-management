@@ -1,0 +1,230 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+body {
+  font-family: "Poppins", sans-serif !important;
+}
+
+/* ✅ General Table Styling */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px; /* Adjust text size for readability */
+}
+
+/* ✅ Table Header & Cells */
+.table th,
+.table td {
+  padding: 8px;
+  text-align: center; /* Center align all table text */
+  border: 1px solid #ddd;
+  vertical-align: middle;
+}
+
+/* ✅ Justify Content Column */
+.table td:nth-child(3) {
+  /* Target "Content" column */
+  text-align: justify; /* Justify text */
+}
+
+/* ✅ Table Header */
+.table thead {
+  background-color: #000;
+  color: white;
+}
+
+/* ✅ Hover Effect */
+.table tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* ✅ Sortable Columns */
+.table th {
+  cursor: pointer;
+  user-select: none;
+  font-weight: normal; /* Remove bold */
+}
+
+.table th i {
+  margin-left: 5px;
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+/* ✅ Status Badges */
+.badge {
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-weight: normal; /* Remove bold */
+}
+
+.badge.bg-success {
+  background-color: #28a745;
+}
+
+.badge.bg-danger {
+  background-color: #dc3545;
+}
+
+/* ✅ Table Buttons */
+.btn-outline-secondary {
+  border: 1px solid #6c757d;
+  color: #6c757d;
+  font-size: 12px;
+  padding: 5px 8px;
+}
+
+
+
+
+
+.search-input {
+  width: 220px;
+  height: 35px;
+  margin-right: 10px;
+  font-size: 14px;
+}
+
+
+/* ✅ Table Cell Alignment */
+.table td[data-label="Action"] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px; /* Spacing between edit button and toggle */
+}
+
+/* ✅ Center the Action Items */
+.action-group {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Spacing between edit button and toggle */
+}
+
+/* ✅ Fix Button Alignment */
+.btn-outline-secondary {
+  border: 1px solid #6c757d;
+  color: #6c757d;
+  font-size: 12px;
+  padding: 5px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ✅ Fix Toggle Switch */
+.form-check.form-switch {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ✅ Ensure toggle switch has correct styling */
+.form-check.form-switch .form-check-input {
+  width: 40px;
+  height: 20px;
+  border-radius: 20px;
+  background-color: #ccc;
+  border: none;
+  appearance: none; /* Remove browser default styles */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+/* ✅ Green when checked */
+.form-check.form-switch .form-check-input:checked {
+  background-color: #28a745;
+}
+
+/* ✅ Hide any unwanted icons */
+.form-check.form-switch .form-check-input::after {
+  content: "";
+  display: none;
+}
+
+/* ✅ Custom Circle (Toggle Knob) */
+.form-check.form-switch .form-check-input::before {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 14px;
+  height: 14px;
+  background: white;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+/* ✅ Move knob when checked */
+.form-check.form-switch .form-check-input:checked::before {
+  left: 22px;
+}
+
+/* ✅ Responsive Fix for Small Screens */
+@media screen and (max-width: 768px) {
+  .table td[data-label="Action"] {
+      flex-direction: column;
+      gap: 5px;
+  }
+}
+
+
+/* ✅ Responsive Table (For Mobile Devices) */
+@media screen and (max-width: 1024px) {
+  .table thead {
+    display: none; /* Hide table headers on small screens */
+  }
+
+  .table tbody tr {
+    display: block;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    padding: 10px;
+  }
+
+  .table tbody tr td {
+    display: block;
+    text-align: left;
+    position: relative;
+    padding-left: 50%;
+  }
+
+  .table tbody tr td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 10px;
+    font-weight: bold;
+    text-align: left;
+    font-size: 14px;
+  }
+
+  .search-input {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+
+  .announce-btn {
+    width: 100%;
+  }
+}
+
+/* ✅ Extra Small Screens (Below 400px) */
+@media screen and (max-width: 400px) {
+  .announcement-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .search-input {
+    width: 100%;
+  }
+
+  .announce-btn {
+    width: 100%;
+    margin-top: 5px;
+  }
+}

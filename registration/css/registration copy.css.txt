@@ -1,0 +1,262 @@
+/* ✅ Full-page structured layout */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    color: #5a5a5a;
+}
+
+/* ✅ Main Container */
+.container {
+    width: 90%;
+    max-width: 1920px;
+    max-height: 1080;
+    margin: 40px auto;
+    padding: 20px;
+    position: relative;
+}
+
+/* ✅ Row 1: Back Button & System Title */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.back-btn {
+    font-size: 18px;
+    cursor: pointer;
+    color: black;
+    text-decoration: none;
+}
+
+.system-title {
+    text-align: right;
+    font-size: 18px;
+    /* font-weight: bold; */
+    line-height: 22px;
+}
+
+/* ✅ Row 2: Registration Form Title */
+.title {
+    text-align: center;
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+/* ✅ FORM CONTAINER (No Grid) */
+.form-container {
+    position: relative;
+    width: 100%;
+}
+
+/* ✅ Labels */
+label {
+    display: block;
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+/* ✅ Inputs & Select Fields */
+input, select {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    text-align: left;
+    width: 100%;
+}
+
+/* ✅ Each row is a flexbox container */
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px; /* Space between columns */
+    margin-bottom: 50px;
+}
+
+/* ✅ Manually adjust field widths */
+.w-school-id { width: 40vw; }   /* School ID */
+.w-sex { width: 20vw; }         /* Sex Dropdown */
+.w-email { width: 30vw; }       /* Email Address */
+.w-first-name { width: 18vw; }  /* First Name */
+.w-middle-name { width: 17vw; } /* Middle Name */
+.w-last-name { width: 18vw; }   /* Last Name */
+.w-username { width: 30vw; }    /* Username */
+.w-phone { width: 18vw; }       /* Phone Number */
+.w-address { width: 37vw; }     /* Address */
+.w-password { width: 30vw; }    /* Password */
+.w-institute { width: 58vw; }   /* Institute */
+.w-confirm-password { width: 30vw; } /* Confirm Password */
+.w-course { width: 43vw; }      /* Course */
+.w-year-section { width: 14.5vw; } /* Year & Section */
+.w-register { width: 33vw;  } /* Register Button */
+
+/* ✅ Ensure "Sex" label aligns properly */
+.w-sex label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* ✅ Center the register button properly */
+.register-btn {
+    background: green;
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.register-btn:hover {
+    background: darkgreen;
+}
+/* ✅ Responsive Fixes */
+
+/* 🔹 1080px Display */
+@media screen and (max-width: 1800px) {
+    .container {
+        width: 95%;
+        padding: 20px;
+    }
+    
+    .row {
+        gap: 10px;
+        margin-bottom: 25px;
+    }
+
+    .w-school-id { width: 45vw; }   
+    .w-sex { width: 15vw; }         
+    .w-email { width: 28vw; }       
+    .w-first-name { width: 20vw; }  
+    .w-middle-name { width: 14vw; } 
+    .w-last-name { width: 20vw; }   
+    .w-username { width: 28vw; }    
+    .w-phone { width: 20vw; }       
+    .w-address { width: 38vw; }     
+    .w-password { width: 28vw; }    
+    .w-institute { width: 63vw; }   
+    .w-confirm-password { width: 28vw; } 
+    .w-course { width: 45vw; }      
+    .w-year-section { width: 15vw; } 
+    .w-register { width: 30vw; } 
+}
+/* 🔹 768px (Tablets) */
+@media screen and (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 15px;
+    }
+
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px; /* Space between fields */
+        margin-bottom: 15px; /* Adjusted spacing between rows */
+    }
+
+    /* ✅ Individual Widths for Manual Adjustments */
+    .w-school-id { width: 40vw; }   /* School ID */
+    .w-sex { width: 15vw; }         /* Sex */
+    .w-email { width: 30vw; }       /* Email Address */
+    
+    .w-first-name { width: 18vw; }  /* First Name */
+    .w-middle-name { width: 10vw; } /* Middle Name */
+    .w-last-name { width: 18vw; }   /* Last Name */
+    .w-username { width: 30vw; }    /* Username */
+
+    .w-phone { width: 15vw; }       /* Phone Number */
+    .w-address { width: 35vw; }     /* Address */
+    .w-password { width: 30vw; }    /* Password */
+    
+    .w-institute { width: 60vw; }  /* Institute */
+    .w-confirm-password { width: 30vw; } /* Confirm Password */
+    
+    .w-course { width: 40vw; }      /* Course */
+    .w-year-section { width: 18vw; } /* Year & Section */
+
+    /* ✅ Register Button */
+    .w-register {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    .register-btn {
+        width: 33vw;
+        /* max-width: 250px; */
+    }
+}
+
+
+/* 🔹 719px (Mobile View) */
+@media screen and (max-width: 719px) {
+    .container {
+        width: 100% !important;
+        padding: 10px !important;
+    }
+
+    .row {
+        display: flex !important;
+        flex-direction: column !important; /* ✅ Single Column Layout */
+        align-items: center !important;
+        gap: 10px !important; /* Space between fields */
+        margin-bottom: 10px !important;
+    }
+
+    /* ✅ Labels are always above the fields */
+    .row label {
+        width: 90vw !important;
+        max-width: 450px !important;
+        font-weight: bold !important;
+        font-size: 14px !important;
+        text-align: left !important;
+    }
+
+    /* ✅ Universal Width for All Fields */
+    .w-school-id, .w-first-name, .w-middle-name, .w-last-name,
+    .w-sex, .w-phone, .w-address, .w-institute, .w-course, 
+    .w-year-section, .w-email, .w-username, .w-password, 
+    .w-confirm-password {
+        width: 90vw !important; /* ✅ All fields have the same width */
+        max-width: 450px !important; /* ✅ Keeps it clean on smaller screens */
+        padding: 12px !important;
+        font-size: 14px !important;
+    }
+
+    /* ✅ Register Button */
+    .w-register {
+        width: 90% !important;
+        max-width: 450px !important;
+        display: flex !important;
+        justify-content: center !important;
+        margin-top: 10px !important;
+    }
+
+    .register-btn {
+        width: 100% !important;
+        max-width: 250px !important;
+        padding: 14px !important;
+        background: green !important;
+        color: white !important;
+        border: none !important;
+        border-radius: 5px !important;
+        font-size: 16px !important;
+        cursor: pointer !important;
+        text-align: center !important;
+    }
+
+    .register-btn:hover {
+        background: darkgreen !important;
+    }
+}

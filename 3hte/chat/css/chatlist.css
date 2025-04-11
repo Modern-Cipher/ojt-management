@@ -1,0 +1,146 @@
+.scrollable-cards {
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 5px;
+    max-height: 1050px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    scrollbar-width: none; /* Firefox */
+  }
+  
+  .scrollable-cards::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+  }
+  
+  .chat-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .chat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  }
+  
+  .chat-card .profile-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .chat-card .profile-img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .chat-card .profile-details {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .chat-card .profile-details .name {
+    font-weight: 600;
+    font-size: 14px;
+  }
+  
+  .chat-card .profile-details .hte {
+    font-size: 12px;
+    color: gray;
+  }
+  
+  .chat-card .right-info {
+    text-align: end;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  
+  .chat-card .right-info .time {
+    color: red;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  
+  .chat-card .right-info .time .red-dot {
+    width: 5px !important;
+    height: 5px !important;
+    background: red;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  
+  .chat-card .right-info .role {
+    color: gray;
+    font-size: 12px;
+    margin-top: 3px;
+  }
+  
+  /* ===== MOBILE VIEW (max 769px) ===== */
+  @media (max-width: 769px) {
+    .scrollable-cards {
+      flex-direction: row;
+      overflow-y: hidden;
+      overflow-x: auto;
+      max-height: none;
+      padding: 10px;
+      gap: 10px;
+    }
+  
+    .chat-card {
+      min-width: 140px;
+      flex-direction: column;
+      align-items: center;
+      padding: 8px;
+      gap: 5px;
+    }
+  
+    .chat-card .profile-info {
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+    }
+  
+    .chat-card .profile-img {
+      width: 50px;
+      height: 50px;
+      margin: 0;
+    }
+  
+    .chat-card .profile-details {
+      align-items: center;
+      text-align: center;
+    }
+  
+    .chat-card .profile-details .hte {
+      display: none; /* Hide HTE sa mobile */
+    }
+  
+    .chat-card .right-info {
+      flex-direction: row;
+      gap: 5px;
+      align-items: center;
+      margin-top: 5px;
+    }
+  
+    .chat-card .right-info .role {
+      display: none; /* Hide role sa mobile */
+    }
+  }
+  
+  .chat-card.active-chat {
+    border: 1px solid #838282;
+    background-color: #ebebeb;
+}
