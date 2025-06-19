@@ -12,6 +12,10 @@ if (!defined('IS_PRODUCTION_ENVIRONMENT')) {
     define('IS_PRODUCTION_ENVIRONMENT', true); // <-- Default for local testing. CHANGE TO 'true' BEFORE HOSTINGER DEPLOYMENT!
 }
 
+// --- ADD THIS LINE HERE ---
+date_default_timezone_set('Asia/Manila'); 
+// --- END ADDITION ---
+
 // Initialize variables for database credentials
 $host = '';
 $dbname = '';
