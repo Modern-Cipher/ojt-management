@@ -1,0 +1,30 @@
+/* Modal responsive layout */
+@media (min-width: 992px) {
+  .form-section {
+    flex: 0 0 40%;
+    max-width: 40%;
+    padding-right: 1rem;
+    border-right: 1px solid #dee2e6;
+  }
+
+  .table-section {
+    flex: 0 0 60%;
+    max-width: 60%;
+    padding-left: 1rem;
+  }
+
+  .modal-body .row {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+}
+
+@media (max-width: 991px) {
+  .form-section,
+  .table-section {
+    max-width: 100%;
+    padding: 0;
+    border: none;
+    margin-bottom: 1rem;
+  }
+}

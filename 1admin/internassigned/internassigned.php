@@ -262,7 +262,7 @@ $usernameDisplay = !empty($user['fname']) ? htmlspecialchars($user['fname']) : h
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../../1admin/internassigned/js/tooltip.js"></script>
     <script src="../../1admin/internassigned/js/coordinator_list.js"></script>
-    <script src="../../1admin/internassigned/js/fetch_students.js"></script>load_student_info.js
+    <script src="../../1admin/internassigned/js/fetch_students.js"></script>
     <script src="../../1admin/internassigned/js/load_student_info.js"></script>
 
 </body>

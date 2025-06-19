@@ -10,32 +10,57 @@ body {
 }
 .table-responsive {
   width: 100%;
+  overflow-x: auto; /* Enable horizontal scrolling on small screens */
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling for mobile */
 }
 .table {
   width: 100%;
   max-width: 100%;
-}
-
-/* ✅ General Table Styling */
-.table {
-  width: 100%;
+  table-layout: fixed; /* Fix column widths */
   border-collapse: collapse;
-  font-size: 14px; /* Adjust text size for readability */
+  font-size: 14px;
 }
 
 /* ✅ Table Header & Cells */
 .table th,
 .table td {
   padding: 8px;
-  text-align: center; /* Center align all table text */
+  text-align: center;
   border: 1px solid #ddd;
   vertical-align: middle;
+  overflow: hidden; /* Prevent overflow */
+  text-overflow: ellipsis; /* Add ellipsis for overflow */
+  white-space: nowrap; /* Prevent text wrapping */
 }
 
-/* ✅ Justify Content Column */
-.table td:nth-child(3) {
-  /* Target "Content" column */
-  text-align: justify; /* Justify text */
+/* ✅ Specific Column Widths */
+.table th:nth-child(1), .table td:nth-child(1) { /* No. */
+  width: 5%;
+  min-width: 40px;
+}
+.table th:nth-child(2), .table td:nth-child(2) { /* Title */
+  width: 15%;
+  min-width: 100px;
+}
+.table th:nth-child(3), .table td:nth-child(3) { /* Content */
+  width: 30%;
+  min-width: 150px;
+}
+.table th:nth-child(4), .table td:nth-child(4) { /* To */
+  width: 10%;
+  min-width: 80px;
+}
+.table th:nth-child(5), .table td:nth-child(5) { /* Posted */
+  width: 20%;
+  min-width: 120px;
+}
+.table th:nth-child(6), .table td:nth-child(6) { /* Status */
+  width: 10%;
+  min-width: 80px;
+}
+.table th:nth-child(7), .table td:nth-child(7) { /* Action */
+  width: 10%;
+  min-width: 100px;
 }
 
 /* ✅ Table Header */
@@ -53,7 +78,7 @@ body {
 .table th {
   cursor: pointer;
   user-select: none;
-  font-weight: normal; /* Remove bold */
+  font-weight: normal;
 }
 
 .table th i {
@@ -67,7 +92,9 @@ body {
   font-size: 12px;
   padding: 4px 8px;
   border-radius: 5px;
-  font-weight: normal; /* Remove bold */
+  font-weight: normal;
+  display: inline-block; /* Ensure badges fit within cells */
+  white-space: nowrap; /* Prevent badge wrapping */
 }
 
 .badge.bg-success {
@@ -84,6 +111,7 @@ body {
   color: #6c757d;
   font-size: 12px;
   padding: 6px 8px;
+  white-space: nowrap; /* Prevent button text wrapping */
 }
 
 .btn-outline-secondary:hover {
@@ -97,14 +125,15 @@ body {
   height: 18px;
   cursor: pointer;
 }
+
 /* Align buttons and switch in the same row */
 td[data-label="Action"] {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px; /* Adjust space between edit button and toggle */
-    white-space: nowrap; /* Prevent wrapping */
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  white-space: nowrap;
+}
 
 /* Ensure the toggle switch stays aligned */
 td[data-label="Action"] .form-check {
@@ -114,13 +143,12 @@ td[data-label="Action"] .form-check {
 }
 
 .action-group {
-    display: flex;
-    align-items: center;
-    gap: 8px; /* Space between edit button and toggle */
-  }
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
 
-
-
+/* ✅ Search Input and Button */
 .search-input {
   width: 220px;
   height: 35px;
@@ -133,55 +161,29 @@ td[data-label="Action"] .form-check {
   font-size: 14px;
 }
 
-
-
-/* ✅ Responsive Table (For Mobile Devices) */
+/* ✅ Responsive Table (For Smaller Screens) */
 @media screen and (max-width: 1024px) {
-  .table thead {
-    display: none; /* Hide table headers on small screens */
+  .table-responsive {
+    overflow-x: auto; /* Maintain horizontal scrolling */
   }
-
-  .table tbody tr {
-    display: block;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    padding: 10px;
+  .table {
+    min-width: 800px; /* Ensure table fits all content in one row */
   }
-
-  .table tbody tr td {
-    display: block;
-    text-align: left;
-    position: relative;
-    padding-left: 50%;
+  .table th,
+  .table td {
+    min-width: 0; /* Allow columns to shrink */
   }
-
-  .table tbody tr td::before {
-    content: attr(data-label);
-    position: absolute;
-    left: 10px;
-    font-weight: bold;
-    text-align: left;
-    font-size: 14px;
+  .table th:nth-child(3), .table td:nth-child(3) { /* Content */
+    max-width: 150px; /* Limit content width */
   }
-
-  .search-input {
-    width: 100%;
-    margin-bottom: 5px;
-  }
-
-  .coordinator-btn {
-    width: 100%;
-  }
-
 }
 
 /* ✅ Extra Small Screens (Below 400px) */
 @media screen and (max-width: 400px) {
-
   .search-input {
     width: 100%;
+    margin-bottom: 5px;
   }
-
   .announce-btn {
     width: 100%;
     margin-top: 5px;

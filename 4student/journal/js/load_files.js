@@ -1,4 +1,4 @@
-// ✅ FINAL CLEAN VERSION - Fully Working File Comment System + File Actions + Toast + Card Style + Proper Toggle + Auto Load Comments
+// ✅ FINAL CLEAN VERSION - Fully Working File Comment System + File Actions + Toast + Card Style + Proper Toggle + Auto Load Comments + Badge-Styled Original File Name with Larger Normal Font
 
 // 📂 Show Toast Function
 function showToast(message, type) {
@@ -28,7 +28,6 @@ function formatDate(datetime) {
 }
 
 // 📂 Load Files
-
 document.addEventListener("DOMContentLoaded", () => {
   fetch("fetch_pre_files.php")
     .then((res) => res.json())
@@ -51,6 +50,15 @@ document.addEventListener("DOMContentLoaded", () => {
               ? "border border-danger"
               : "border border-muted";
 
+          const fileNameBadge =
+            file.upload_status === "accepted"
+              ? "bg-success text-white"
+              : file.upload_status === "processing"
+              ? "bg-secondary text-white"
+              : file.upload_status === "rejected"
+              ? "bg-danger text-white"
+              : "bg-light text-dark";
+
           card.className = `dashboard-card card shadow-sm p-3 mb-3 ${statusCard}`;
 
           const fileInputId = `pdfFileInput-${file.filename_id}`;
@@ -61,25 +69,24 @@ document.addEventListener("DOMContentLoaded", () => {
               <div class="card-header bg-white border-0 pb-2 d-flex justify-content-between align-items-center">
                   <div>
                       <strong>${file.filename}</strong><br />
-                      <small>${"Checked by " + file.checker_name || ""}</small>
+                      <small>Checked by ${file.checker_name}</small><br />
+                      <small>Week ${file.count}</small>
                   </div>
-                    <div class="text-end">
-                    <span class="badge px-2 py-1 fw-medium text-capitalize 
-                        ${
-                        file.upload_status === "accepted"
-                            ? "bg-success text-white"
-                            : file.upload_status === "processing"
-                            ? "bg-secondary text-white"
-                            : file.upload_status === "rejected"
-                            ? "bg-danger text-white"
-                            : "bg-light text-dark"
-                        } rounded">
-                        ${file.upload_status || "No File Upload"}
-                    </span><br />
-                    <small>${file.updated_on ? formatDate(file.updated_on) : ""}</small>
-                    </div>
-
-
+                  <div class="text-end">
+                      <span class="badge px-2 py-1 fw-medium text-capitalize 
+                          ${
+                            file.upload_status === "accepted"
+                              ? "bg-success text-white"
+                              : file.upload_status === "processing"
+                              ? "bg-secondary text-white"
+                              : file.upload_status === "rejected"
+                              ? "bg-danger text-white"
+                              : "bg-light text-dark"
+                          } rounded">
+                          ${file.upload_status || "No File Upload"}
+                      </span><br />
+                      <small>${file.updated_on ? formatDate(file.updated_on) : ""}</small>
+                  </div>
               </div>
   
               <div class="card-body pt-0">
@@ -95,31 +102,34 @@ document.addEventListener("DOMContentLoaded", () => {
                           <i class="fa-solid fa-upload"></i>
                       </button>
                   </div>
+                  <span class="badge ${fileNameBadge} px-2 py-1 mb-2 d-block text-start fw-normal" style="font-size: 0.9rem;">${
+                    file.original_file_name !== "-"
+                      ? file.original_file_name
+                      : "No file uploaded"
+                  }</span>
   
                   <div class="text-end d-flex justify-content-end gap-2 flex-wrap mb-2">
                       <button class="btn btn-sm btn-outline-dark viewBtn" data-path="${
                         file.filepath || ""
                       }" ${!file.filepath ? "disabled" : ""} title="View File">
-                        <i class="fa-solid fa-eye"></i>
+                          <i class="fa-solid fa-eye"></i>
                       </button>
                       <button class="btn btn-sm btn-outline-dark downloadBtn" data-path="${
                         file.filepath || ""
-                      }" ${
-            !file.filepath ? "disabled" : ""
-          } title="Download File">
-                        <i class="fa-solid fa-download"></i>
+                      }" ${!file.filepath ? "disabled" : ""} title="Download File">
+                          <i class="fa-solid fa-download"></i>
                       </button>
                       <button class="btn btn-sm btn-outline-dark deleteBtn" data-upload-id="${
                         file.uploads_id || ""
                       }" data-filepath="${file.filepath || ""}" ${
-            !file.uploads_id || isAccepted ? "disabled" : ""
-          } title="Delete File">
-                        <i class="fa-solid fa-trash"></i>
+                        !file.uploads_id || isAccepted ? "disabled" : ""
+                      } title="Delete File">
+                          <i class="fa-solid fa-trash"></i>
                       </button>
                       <button class="btn btn-sm btn-success submitBtn" data-filename-id="${
                         file.filename_id
                       }" ${isAccepted ? "disabled" : ""} title="Submit File">
-                        <span>Submit</span>
+                          <span>Submit</span>
                       </button>
                   </div>
   
@@ -127,7 +137,7 @@ document.addEventListener("DOMContentLoaded", () => {
                   <p class="text-center text-muted mb-2 toggle-comment" data-filename-id="${
                     file.filename_id
                   }" style="cursor:pointer;">
-                    View all comments <i class="fa-solid fa-square-caret-down"></i>
+                      View all comments <i class="fa-solid fa-square-caret-down"></i>
                   </p>
                   <hr />
                   <div class="comment-section scrollable-comments" id="commentSection-${
@@ -136,15 +146,15 @@ document.addEventListener("DOMContentLoaded", () => {
                   <div class="input-group mb-3" id="commentInput-${
                     file.filename_id
                   }" style="display:none;">
-                    <input type="text" class="form-control" placeholder="Reply Comment" />
-                    <button class="btn btn-outline-success  submitCommentBtn" data-filename-id="${
-                      file.filename_id
-                    }">
-                      <i class="fa-solid fa-paper-plane"></i>
-                    </button>
+                      <input type="text" class="form-control" placeholder="Reply Comment" />
+                      <button class="btn btn-outline-success submitCommentBtn" data-filename-id="${
+                        file.filename_id
+                      }">
+                          <i class="fa-solid fa-paper-plane"></i>
+                      </button>
                   </div>
               </div>
-            `;
+          `;
 
           grid.appendChild(card);
           loadComments(file.filename_id);
@@ -161,63 +171,57 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // ✅ Comment System Core Functions
-
 function loadComments(filenameId) {
-    const section = document.getElementById(`commentSection-${filenameId}`);
-    fetch(`fetch_file_comments.php?filename_id=${filenameId}`)
-      .then((res) => res.json())
-      .then((data) => {
-        section.innerHTML = "";
-        if (data.comments) {
-          data.comments.forEach((c) => {
-            const imageProfile = c.image_profile
-              ? `../../upload_profile/${c.image_profile}`
-              : `../../resources/siplogo.png`; // Default if empty
-  
-            const div = document.createElement("div");
-            div.className = "d-flex align-items-start mb-2";
-            div.innerHTML = `
-                <img src="${imageProfile}" alt="User" class="rounded-circle comment-avatar">
-                <div class="ms-2 w-100 d-flex justify-content-between">
-                  <div class="ms-2">
-                    <strong>${c.fullname}</strong>
-                    ${
-                      c.checkedby_id
-                        ? `<span class="badge bg-info">Replied</span>`
-                        : ""
-                    }<br />
-                    <small class="text-muted">${formatDate(
-                      c.created_at
-                    )}</small><br /><br />
-                    <p class="m-0">${c.comment}</p>
-                  </div>
+  const section = document.getElementById(`commentSection-${filenameId}`);
+  fetch(`fetch_file_comments.php?filename_id=${filenameId}`)
+    .then((res) => res.json())
+    .then((data) => {
+      section.innerHTML = "";
+      if (data.comments) {
+        data.comments.forEach((c) => {
+          const imageProfile = c.image_profile
+            ? `../../upload_profile/${c.image_profile}`
+            : `../../resources/siplogo.png`; // Default if empty
+
+          const div = document.createElement("div");
+          div.className = "d-flex align-items-start mb-2";
+          div.innerHTML = `
+              <img src="${imageProfile}" alt="User" class="rounded-circle comment-avatar">
+              <div class="ms-2 w-100 d-flex justify-content-between">
+                <div class="ms-2">
+                  <strong>${c.fullname}</strong>
                   ${
-                    c.commenter_id == sessionUserId
-                      ? `
-                  <button class="btn btn-sm btn-outline-danger deleteCommentBtn" data-comment-id="${c.file_comment_id}">
-                    <i class="fa-solid fa-trash"></i>
-                  </button>`
+                    c.checkedby_id
+                      ? `<span class="badge bg-info">Replied</span>`
                       : ""
-                  }
+                  }<br />
+                  <small class="text-muted">${formatDate(c.created_at)}</small><br /><br />
+                  <p class="m-0">${c.comment}</p>
                 </div>
-                <hr/>
-              `;
-            section.appendChild(div);
-          });
-          attachDeleteComment(filenameId);
-        }
-      })
-      .catch((err) => {
-        showToast("❌ Failed to load comments.", "danger");
-        console.error(err);
-      });
-  }
-  
+                ${
+                  c.commenter_id == sessionUserId
+                    ? `
+                <button class="btn btn-sm btn-outline-danger deleteCommentBtn" data-comment-id="${c.file_comment_id}">
+                  <i class="fa-solid fa-trash"></i>
+                </button>`
+                    : ""
+                }
+              </div>
+              <hr/>
+            `;
+          section.appendChild(div);
+        });
+        attachDeleteComment(filenameId);
+      }
+    })
+    .catch((err) => {
+      showToast("❌ Failed to load comments.", "danger");
+      console.error(err);
+    });
+}
 
 function restoreToggle(filenameId) {
-  const commentSection = document.getElementById(
-    `commentSection-${filenameId}`
-  );
+  const commentSection = document.getElementById(`commentSection-${filenameId}`);
   const inputSection = document.getElementById(`commentInput-${filenameId}`);
   const state = localStorage.getItem(`toggle-comment-${filenameId}`);
   if (state === "show") {
@@ -228,6 +232,7 @@ function restoreToggle(filenameId) {
     inputSection.style.display = "none";
   }
 }
+
 function attachEvents() {
   document.querySelectorAll(".submitCommentBtn").forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -265,12 +270,8 @@ function attachEvents() {
   document.querySelectorAll(".toggle-comment").forEach((btn) => {
     btn.addEventListener("click", () => {
       const filenameId = btn.dataset.filenameId;
-      const commentSection = document.getElementById(
-        `commentSection-${filenameId}`
-      );
-      const inputSection = document.getElementById(
-        `commentInput-${filenameId}`
-      );
+      const commentSection = document.getElementById(`commentSection-${filenameId}`);
+      const inputSection = document.getElementById(`commentInput-${filenameId}`);
       const isVisible = commentSection.style.display !== "none";
 
       if (isVisible) {
@@ -290,6 +291,9 @@ function attachEvents() {
       }
     });
   });
+
+  // 🔥 Bind File Actions here
+  attachFileActions();
 }
 
 function attachDeleteComment(filenameId) {
@@ -320,8 +324,8 @@ function attachDeleteComment(filenameId) {
     });
   });
 }
-// ✅ FILE ACTIONS ONLY
 
+// ✅ FILE ACTIONS ONLY
 function attachFileActions() {
   document.querySelectorAll(".uploadBtn").forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -417,7 +421,7 @@ function attachFileActions() {
         .then((res) => res.json())
         .then((data) => {
           if (data.status === "success") {
-            showToast("✅ File deleted!", "success");
+            showToast("✅ File deleted", "success");
             setTimeout(() => location.reload(), 1000);
           } else {
             showToast("❌ " + data.message, "danger");
@@ -429,72 +433,4 @@ function attachFileActions() {
         });
     });
   });
-}
-// ✅ FINAL STEP - Call File Actions after attaching comment events
-
-function attachEvents() {
-  // Comment Submit & Toggle Events
-  document.querySelectorAll(".submitCommentBtn").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const filenameId = btn.dataset.filenameId;
-      const input = document.querySelector(`#commentInput-${filenameId} input`);
-      const comment = input.value.trim();
-
-      if (!comment) {
-        showToast("❌ Please enter a comment.", "warning");
-        return;
-      }
-
-      fetch("post_file_comment.php", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ filename_id: filenameId, comment }),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.status === "success") {
-            showToast("✅ Comment posted!", "success");
-            input.value = "";
-            loadComments(filenameId);
-          } else {
-            showToast("❌ " + data.message, "danger");
-          }
-        })
-        .catch((err) => {
-          showToast("❌ Comment post failed.", "danger");
-          console.error(err);
-        });
-    });
-  });
-
-  document.querySelectorAll(".toggle-comment").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const filenameId = btn.dataset.filenameId;
-      const commentSection = document.getElementById(
-        `commentSection-${filenameId}`
-      );
-      const inputSection = document.getElementById(
-        `commentInput-${filenameId}`
-      );
-      const isVisible = commentSection.style.display !== "none";
-
-      if (isVisible) {
-        commentSection.style.display = "none";
-        inputSection.style.display = "none";
-        localStorage.setItem(`toggle-comment-${filenameId}`, "hide");
-      } else {
-        commentSection.style.display = "block";
-        inputSection.style.display = "flex";
-        localStorage.setItem(`toggle-comment-${filenameId}`, "show");
-      }
-      // ✅ Load comments if not yet loaded
-      if (!commentSection.dataset.loaded) {
-        loadComments(filenameId);
-        commentSection.dataset.loaded = "true";
-      }
-    });
-  });
-
-  // 🔥 Bind File Actions here
-  attachFileActions();
 }

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 11, 2025 at 08:22 AM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Generation Time: Jun 19, 2025 at 09:01 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -37,14 +37,44 @@ CREATE TABLE `announcements` (
   `role` enum('all','admin','coordinator','student','trainer','subtrainer') DEFAULT 'all',
   `announce_status` enum('posted','drafted') DEFAULT 'drafted',
   `notified` tinyint(1) DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `announcements`
+-- Table structure for table `attendance`
 --
 
-INSERT INTO `announcements` (`announcements_id`, `users_id`, `title`, `content`, `announce_images`, `created_at`, `role`, `announce_status`, `notified`) VALUES
-(17, 1, 'Greetings', 'Good Day to Everyone', NULL, '2025-04-11 11:48:40', 'all', 'posted', 1);
+CREATE TABLE `attendance` (
+  `attendance_id` int(11) NOT NULL,
+  `school_id` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `first_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `middle_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `last_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sex` enum('Male','Female','Other') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `institute` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `course` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL CHECK (`email` like '%@%.%'),
+  `selfie_image_path` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ip_address` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `device_info` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `timestamp` datetime DEFAULT current_timestamp(),
+  `qr_code_data` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `is_qr_scanned` tinyint(1) DEFAULT 0,
+  `scanned_timestamp` datetime DEFAULT NULL,
+  `scanned_by_ip_address` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `scanned_by_device_info` text COLLATE utf8mb4_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `attendance`
+--
+
+INSERT INTO `attendance` (`attendance_id`, `school_id`, `first_name`, `middle_name`, `last_name`, `sex`, `institute`, `course`, `email`, `selfie_image_path`, `ip_address`, `device_info`, `timestamp`, `qr_code_data`, `is_qr_scanned`, `scanned_timestamp`, `scanned_by_ip_address`, `scanned_by_device_info`) VALUES
+(8, '2018100593', 'meds', 'c', 'bunalde', 'Male', 'Institute of Management', 'BS in Business Administration', 'medel.bunalade@yahoo.com', 'upload_selfie/selfie_1750282231_yoj5FW.jpg', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', '2025-06-19 05:30:31', '3814b7adf6ba13908a747d2a9d880547', 0, NULL, NULL, NULL),
+(11, 'rwerwerd', 'acasc', 'acasc', 'bunalde', 'Female', 'Institute of Engineering and Applied Technology', 'BS in Information Technology', 'pd776963@gmail.com', 'upload_selfie/selfie_1750283557_XjYFzt.jpg', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', '2025-06-19 05:52:37', '0ecc478ec38a2fca908aa17b033360a0', 0, NULL, NULL, NULL),
+(14, '2018101104d', 'asdas', 'asd', 'asd', 'Male', 'Institute of Management', 'BS in Hotel Management', 'im@gmail.com', 'upload_selfie/selfie_1750286170_pMrnbU.jpg', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', '2025-06-19 06:36:10', '79b88dce692a0d34ccf062372f795850', 0, NULL, NULL, NULL),
+(15, 'Jen', 'Ksj', 'Ksks', 'Kdks', 'Female', 'Institute of Engineering and Applied Technology', 'BS in Information Technology', 'm@gmail.com', 'upload_selfie/selfie_1750290127_DySoBd.jpg', '192.168.1.3', 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Mobile Safari/537.36', '2025-06-19 07:42:07', '1e149d12148f11f676e952eb02952a7e', 1, '2025-06-19 01:43:53', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36');
 
 -- --------------------------------------------------------
 
@@ -59,37 +89,22 @@ CREATE TABLE `chat_messages` (
   `message` text NOT NULL,
   `is_read` enum('yes','no') DEFAULT 'no',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `chat_messages`
 --
 
 INSERT INTO `chat_messages` (`message_id`, `sender_id`, `receiver_id`, `message`, `is_read`, `created_at`) VALUES
-(20, 19, 18, 'for delete', 'no', '2025-04-01 01:44:28'),
-(21, 20, 39, 'im', 'no', '2025-04-01 05:38:59'),
-(27, 19, 18, 'f', 'no', '2025-04-01 05:55:52'),
-(31, 19, 18, 'ddd', 'no', '2025-04-01 07:34:49'),
-(32, 19, 38, 'jane', 'no', '2025-04-01 07:39:02'),
-(34, 19, 38, 'ffds', 'no', '2025-04-01 07:56:31'),
-(35, 19, 18, 'test', 'no', '2025-04-05 18:26:40'),
-(36, 19, 1, 'hello', 'no', '2025-04-05 18:44:36'),
-(37, 1, 19, 'hi', 'no', '2025-04-05 18:44:49'),
-(38, 19, 18, 'from coordinator', 'no', '2025-04-05 18:45:12'),
-(39, 19, 1, 'from coordinato', 'no', '2025-04-05 18:45:45'),
-(40, 1, 19, 'xc', 'no', '2025-04-05 18:45:52'),
-(41, 19, 1, 'j', 'no', '2025-04-05 18:45:56'),
-(42, 19, 18, 'sc', 'no', '2025-04-05 18:49:42'),
-(43, 1, 19, 'good day', 'no', '2025-04-05 18:52:01'),
-(44, 19, 1, 'd', 'no', '2025-04-05 18:52:30'),
-(45, 1, 18, 'd', 'no', '2025-04-05 18:52:35'),
-(46, 19, 1, 'd', 'no', '2025-04-05 18:52:39'),
-(47, 36, 19, 'ff', 'no', '2025-04-05 19:18:48'),
-(48, 19, 36, 'ffs', 'no', '2025-04-05 19:18:53'),
-(49, 36, 4, 'hello', 'no', '2025-04-05 19:54:11'),
-(50, 4, 36, 'yes po', 'no', '2025-04-05 19:54:22'),
-(51, 4, 36, 'yes sir', 'no', '2025-04-05 23:49:01'),
-(52, 36, 4, 'bakit', 'no', '2025-04-05 23:49:13');
+(182, 50, 45, 'hello po', 'yes', '2025-06-18 14:59:58'),
+(183, 50, 45, 'd', 'yes', '2025-06-18 15:00:04'),
+(184, 49, 46, 'hi', 'yes', '2025-06-18 15:00:16'),
+(185, 50, 45, 'Attachment: upload_chatfiles/Internship_MOA_-_Student__Repaired___signed__ebzicg.pdf|Internship MOA - Student (Repaired) (signed).pdf|application/pdf', 'yes', '2025-06-18 15:00:29'),
+(186, 50, 45, 'Attachment: upload_chatfiles/2024_MOA-for-OJT-Small-business-or-Sole_SHIFT101-1_z3vweu.docx|2024_MOA-for-OJT-Small-business-or-Sole_SHIFT101-1.docx|application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'yes', '2025-06-18 15:00:34'),
+(187, 49, 46, 'Attachment: upload_chatfiles/5__BunaladeMedelC_BSIT4A_PhotocopyID_jge8o4.jpg|5. BunaladeMedelC_BSIT4A_PhotocopyID.jpg|image/jpeg', 'yes', '2025-06-18 15:00:43'),
+(188, 50, 45, 'V', 'no', '2025-06-18 16:36:55'),
+(189, 45, 47, 'Please Send the MOA Thanks', 'yes', '2025-06-18 16:45:54'),
+(190, 47, 45, 'Attachment: upload_chatfiles/INTERNSHIP_PERFORMANCE_RATING_FORM_d4c6v1.docx|INTERNSHIP PERFORMANCE RATING FORM.docx|application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'no', '2025-06-18 16:46:15');
 
 -- --------------------------------------------------------
 
@@ -105,37 +120,15 @@ CREATE TABLE `chat_notifications` (
   `is_read` enum('yes','no') DEFAULT 'no',
   `related_message_id` int(11) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `chat_notifications`
 --
 
 INSERT INTO `chat_notifications` (`notif_id`, `receiver_id`, `sender_id`, `message`, `is_read`, `related_message_id`, `created_at`) VALUES
-(23, 18, 19, 'for delete', 'no', 20, '2025-04-01 01:44:28'),
-(24, 39, 20, 'im', 'no', 21, '2025-04-01 05:38:59'),
-(30, 18, 19, 'f', 'no', 27, '2025-04-01 05:55:52'),
-(34, 18, 19, 'ddd', 'no', 31, '2025-04-01 07:34:49'),
-(35, 38, 19, 'jane', 'no', 32, '2025-04-01 07:39:02'),
-(37, 38, 19, 'ffds', 'no', 34, '2025-04-01 07:56:31'),
-(38, 18, 19, 'test', 'no', 35, '2025-04-05 18:26:40'),
-(39, 1, 19, 'hello', 'no', 36, '2025-04-05 18:44:36'),
-(40, 19, 1, 'hi', 'no', 37, '2025-04-05 18:44:49'),
-(41, 18, 19, 'from coordinator', 'no', 38, '2025-04-05 18:45:12'),
-(42, 1, 19, 'from coordinato', 'no', 39, '2025-04-05 18:45:45'),
-(43, 19, 1, 'xc', 'no', 40, '2025-04-05 18:45:52'),
-(44, 1, 19, 'j', 'no', 41, '2025-04-05 18:45:56'),
-(45, 18, 19, 'sc', 'no', 42, '2025-04-05 18:49:42'),
-(46, 19, 1, 'good day', 'no', 43, '2025-04-05 18:52:01'),
-(47, 1, 19, 'd', 'no', 44, '2025-04-05 18:52:30'),
-(48, 18, 1, 'd', 'no', 45, '2025-04-05 18:52:35'),
-(49, 1, 19, 'd', 'no', 46, '2025-04-05 18:52:39'),
-(50, 19, 36, 'ff', 'no', 47, '2025-04-05 19:18:48'),
-(51, 36, 19, 'ffs', 'no', 48, '2025-04-05 19:18:53'),
-(52, 4, 36, 'hello', 'no', 49, '2025-04-05 19:54:11'),
-(53, 36, 4, 'yes po', 'no', 50, '2025-04-05 19:54:22'),
-(54, 36, 4, 'yes sir', 'no', 51, '2025-04-05 23:49:01'),
-(55, 4, 36, 'bakit', 'no', 52, '2025-04-05 23:49:13');
+(191, 45, 50, 'V', 'no', 188, '2025-06-18 16:36:55'),
+(193, 45, 47, 'New upload: INTERNSHIP PERFORMANCE RATING FORM.docx', 'no', 190, '2025-06-18 16:46:15');
 
 -- --------------------------------------------------------
 
@@ -150,7 +143,7 @@ CREATE TABLE `comments` (
   `comments` text NOT NULL,
   `created_at` datetime DEFAULT current_timestamp(),
   `notified` tinyint(1) DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -161,36 +154,51 @@ CREATE TABLE `comments` (
 CREATE TABLE `filename` (
   `filename_id` int(11) NOT NULL,
   `filename` varchar(255) NOT NULL,
-  `count` enum('0','1','2','3','4','5','6','7','8','9','10','11','12','13','14','15') DEFAULT '0',
-  `category` enum('pre','post','hte','journal') DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+  `count` enum('0','1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20') DEFAULT '0',
+  `category` enum('pre','post','hte','journal') DEFAULT NULL,
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `user_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `filename`
 --
 
-INSERT INTO `filename` (`filename_id`, `filename`, `count`, `category`) VALUES
-(1, 'Intent Letter', '1', 'pre'),
-(2, 'Resume', '3', 'pre'),
-(3, 'medical certificate', '2', 'pre'),
-(4, 'Certificate of Completion', '1', 'post'),
-(5, 'Memorandum of Agreement', '1', 'hte'),
-(6, 'Evaluation of Grades', '2', 'hte'),
-(7, 'Journal-Week 1', '1', 'journal'),
-(8, 'Journal-Week 2', '2', 'journal'),
-(9, 'Journal-Week 3', '3', 'journal'),
-(10, 'Journal-Week 4', '4', 'journal'),
-(11, 'Journal-Week 5', '5', 'journal'),
-(12, 'Journal-Week 6', '6', 'journal'),
-(13, 'Journal-Week 7', '7', 'journal'),
-(14, 'Journal-Week 8', '8', 'journal'),
-(15, 'Journal-Week 9', '9', 'journal'),
-(16, 'Journal-Week 10', '10', 'journal'),
-(17, 'Journal-Week 11', '11', 'journal'),
-(18, 'Journal-Week 12', '12', 'journal'),
-(19, 'Journal-Week 13', '13', 'journal'),
-(20, 'Journal-Week 14', '14', 'journal'),
-(21, 'Journal-Week 15', '15', 'journal');
+INSERT INTO `filename` (`filename_id`, `filename`, `count`, `category`, `updated_at`, `user_id`) VALUES
+(1, 'Internship Application Form', '1', 'pre', '2025-06-18 00:23:36', NULL),
+(2, 'Letter of intent for Student Internship (application Letter)', '2', 'pre', '2025-06-18 00:23:36', NULL),
+(3, 'Resume', '3', 'pre', '2025-06-18 00:23:36', NULL),
+(4, 'Certificate of Registration', '4', 'pre', '2025-06-18 00:23:36', NULL),
+(5, 'Photocopy of ID w/ 3 Specimen Signature', '5', 'pre', '2025-06-18 00:23:36', NULL),
+(6, 'Medical Insurance', '6', 'pre', '2025-06-18 00:23:36', NULL),
+(7, 'Medical Certificate', '7', 'pre', '2025-06-18 00:23:36', NULL),
+(8, 'Certificate of Units Earned before Internship', '8', 'pre', '2025-06-18 00:23:36', NULL),
+(9, 'Parental Consent', '9', 'pre', '2025-06-18 00:23:36', NULL),
+(10, 'Photocopy of Parent ID with 3 Specimen Signature', '10', 'pre', '2025-06-18 00:23:36', NULL),
+(11, 'PSA Birth Certificate', '11', 'pre', '2025-06-18 00:23:36', NULL),
+(12, 'Endorsement Letter', '12', 'pre', '2025-06-18 00:23:36', NULL),
+(13, 'Internship Contract', '13', 'pre', '2025-06-18 00:23:36', NULL),
+(14, 'Memorandum of Agreement', '14', 'pre', '2025-06-18 00:23:36', NULL),
+(15, ' OJT Orientation Attendance Sheet', '15', 'pre', '2025-06-18 00:23:36', NULL),
+(16, 'Successful OJT Application', '15', 'pre', '2025-06-18 00:23:36', NULL),
+(17, ' Google Form Internship Evaluation for Intern', '1', 'post', '2025-06-18 00:23:36', NULL),
+(18, 'OJT Report Hardbound Guide and Official Form Header', '2', 'post', '2025-06-18 00:23:36', NULL),
+(19, 'Google Form Internship Evaluation for Supervisor', '3', 'post', '2025-06-18 00:23:36', NULL),
+(20, 'Certificate of Completion', '4', 'post', '2025-06-18 00:23:36', NULL),
+(21, 'Internship Journal Evaluation Form', '5', 'post', '2025-06-18 00:23:36', NULL),
+(22, 'Internship Performance Rating Form', '6', 'post', '2025-06-18 00:23:36', NULL),
+(23, 'Internship Feedback Mechanism', '7', 'post', '2025-06-18 00:23:36', NULL),
+(24, 'Internship Monitoring and Evaluation Form', '8', 'post', '2025-06-18 00:23:36', NULL),
+(46, 'Internship Contract Agreement', '1', 'hte', '2025-06-18 14:00:50', NULL),
+(47, 'Internship Feedback Mechanism', '3', 'hte', '2025-06-18 14:01:59', NULL),
+(48, 'Internship Monitoring  and Evaluation Form', '4', 'hte', '2025-06-18 14:01:55', NULL),
+(49, 'Memorandum of Agreement', '2', 'hte', '2025-06-18 14:01:39', NULL),
+(50, 'Week 1', '1', 'journal', '2025-06-18 17:51:16', 45),
+(51, 'Week 2', '2', 'journal', '2025-06-18 17:50:43', 45),
+(52, 'Week 3', '3', 'journal', '2025-06-18 17:51:38', 45),
+(53, 'Week 4', '4', 'journal', '2025-06-18 17:51:43', 45),
+(54, 'Week 5', '5', 'journal', '2025-06-18 17:53:12', 45),
+(55, 'Week 6', '6', 'journal', '2025-06-18 17:53:21', 45);
 
 -- --------------------------------------------------------
 
@@ -205,54 +213,18 @@ CREATE TABLE `file_comments` (
   `uploadedby_id` int(11) DEFAULT NULL,
   `comment` text NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `file_comments`
 --
 
 INSERT INTO `file_comments` (`file_comment_id`, `filename_id`, `commenter_id`, `uploadedby_id`, `comment`, `created_at`) VALUES
-(54, 4, 18, NULL, 'vdsv', '2025-03-30 15:44:07'),
-(55, 4, 18, NULL, 'sdv', '2025-03-30 15:44:17'),
-(56, 4, 4, NULL, 'csc', '2025-03-30 15:53:48'),
-(57, 4, 18, NULL, 'c', '2025-03-30 15:53:52'),
-(58, 4, 4, NULL, 'scs', '2025-03-30 15:53:59'),
-(63, 4, 19, 4, 'mary good', '2025-03-30 15:55:53'),
-(64, 4, 19, 18, 'aljon good', '2025-03-30 15:55:53'),
-(65, 4, 4, NULL, 'axa', '2025-03-30 16:00:51'),
-(66, 2, 18, NULL, 'sda', '2025-03-30 16:03:56'),
-(67, 2, 4, NULL, 'sdf', '2025-03-30 16:04:11'),
-(68, 2, 19, 4, 'resume ni mary', '2025-03-30 16:05:36'),
-(70, 6, 36, NULL, 'csaca', '2025-03-30 16:10:30'),
-(72, 5, 36, NULL, 'dd', '2025-03-31 05:12:30'),
-(74, 5, 36, NULL, 'asd', '2025-03-31 05:12:34'),
-(87, 5, 37, NULL, 'test new trainer', '2025-03-31 12:08:03'),
-(90, 6, 37, NULL, 'ddd', '2025-03-31 12:41:39'),
-(91, 5, 37, NULL, 'dd', '2025-03-31 12:41:41'),
-(92, 5, 40, NULL, 'sda', '2025-03-31 12:54:01'),
-(93, 6, 40, NULL, 'asdasd', '2025-03-31 12:54:03'),
-(94, 5, 20, 40, 'dsfsf from imtrainer', '2025-03-31 13:19:40'),
-(96, 5, 19, 37, 'sadsd', '2025-03-31 14:45:11'),
-(97, 5, 20, 40, 'dsd', '2025-03-31 14:54:11'),
-(98, 5, 19, 36, 'asd', '2025-03-31 14:57:33'),
-(99, 5, 37, NULL, 'asd', '2025-03-31 14:57:39'),
-(103, 6, 19, 36, 'try', '2025-03-31 15:17:00'),
-(105, 5, 19, 37, 'this from accenture', '2025-03-31 15:17:28'),
-(106, 5, 20, 40, 'im coord 5 star hotel', '2025-03-31 15:18:03'),
-(107, 6, 19, 37, 'hello', '2025-03-31 15:18:48'),
-(108, 2, 19, 18, 'dasd', '2025-03-31 16:02:05'),
-(109, 2, 18, NULL, 'asdasd', '2025-03-31 16:02:31'),
-(110, 3, 18, NULL, 'sadasd', '2025-03-31 16:02:44'),
-(111, 3, 19, 18, 'ddddd', '2025-03-31 16:03:09'),
-(112, 2, 4, NULL, 'dad', '2025-03-31 16:04:08'),
-(113, 1, 4, NULL, 'asdasd', '2025-03-31 16:04:30'),
-(114, 3, 4, NULL, 'ddawd', '2025-03-31 16:04:33'),
-(115, 2, 19, 4, 'ddd', '2025-03-31 16:04:46'),
-(116, 2, 39, NULL, 'gsdgsdg', '2025-03-31 16:07:26'),
-(117, 2, 20, 39, 'safasfa', '2025-03-31 16:08:06'),
-(118, 4, 19, 4, 'fsdf', '2025-03-31 16:22:09'),
-(119, 7, 18, NULL, 'testing journal week 1', '2025-03-31 18:15:21'),
-(120, 7, 19, 18, 'good', '2025-03-31 18:22:01');
+(125, 46, 47, NULL, 'nagsubmit na po ako pacheck nalang po', '2025-06-18 14:19:19'),
+(126, 46, 48, NULL, 'pacheck po salamat', '2025-06-18 14:19:44'),
+(127, 50, 50, NULL, 'naupload ko n apo', '2025-06-18 16:44:06'),
+(128, 50, 45, 50, 'okie', '2025-06-18 16:44:13'),
+(129, 46, 45, 47, 'approved na po', '2025-06-18 16:47:40');
 
 -- --------------------------------------------------------
 
@@ -269,18 +241,16 @@ CREATE TABLE `hte` (
   `coordinator_id` int(11) DEFAULT NULL,
   `trainee_id` int(11) DEFAULT NULL,
   `hte_created` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `hte`
 --
 
 INSERT INTO `hte` (`hte_id`, `hte_name`, `hte_address`, `hte_status`, `trainer_id`, `coordinator_id`, `trainee_id`, `hte_created`) VALUES
-(1, 'PLDT', 'Makakit City Manila', 'approved', 38, 19, NULL, '2025-03-28 14:29:31'),
-(3, 'Accenture', 'Manila', 'approved', 37, 19, NULL, '2025-03-28 14:33:08'),
-(4, 'Globe Corp', 'Quezon City', 'approved', 36, 19, NULL, '2025-03-28 15:03:44'),
-(6, '5 Star Hotel', 'Manila', 'approved', 40, 20, NULL, '2025-03-29 13:49:21'),
-(7, 'sfds', 'sdfds', 'approved', NULL, 20, NULL, '2025-03-31 12:56:12');
+(10, 'Sales Rain', 'One Corporate, Ortigas', 'approved', 47, 45, NULL, '2025-06-18 14:11:56'),
+(11, 'WT Migremo Systems Inc.', 'WT Migremo Systems Inc., Mandaluyong', 'pending', 48, 46, NULL, '2025-06-18 14:12:58'),
+(12, 'PLDT Corp.', 'Quezon City', 'pending', NULL, 45, NULL, '2025-06-18 15:15:22');
 
 -- --------------------------------------------------------
 
@@ -297,19 +267,7 @@ CREATE TABLE `notifications` (
   `message` text DEFAULT NULL,
   `is_read` tinyint(1) DEFAULT 0,
   `created_at` datetime DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
---
--- Dumping data for table `notifications`
---
-
-INSERT INTO `notifications` (`notifications_id`, `receiver_id`, `sender_id`, `type`, `source_id`, `message`, `is_read`, `created_at`) VALUES
-(1820, 4, 1, 'announcements', 17, 'New announcement: Greetings', 0, '2025-04-11 11:48:40'),
-(1821, 18, 1, 'announcements', 17, 'New announcement: Greetings', 0, '2025-04-11 11:48:40'),
-(1822, 19, 1, 'announcements', 17, 'New announcement: Greetings', 0, '2025-04-11 11:48:40'),
-(1823, 36, 1, 'announcements', 17, 'New announcement: Greetings', 0, '2025-04-11 11:48:40'),
-(1824, 37, 1, 'announcements', 17, 'New announcement: Greetings', 0, '2025-04-11 11:48:40'),
-(1825, 38, 1, 'announcements', 17, 'New announcement: Greetings', 0, '2025-04-11 11:48:40');
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -326,20 +284,22 @@ CREATE TABLE `ojt_status_history` (
   `date_changed` datetime DEFAULT current_timestamp(),
   `old_hte_id` int(11) DEFAULT NULL,
   `new_hte_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `ojt_status_history`
 --
 
 INSERT INTO `ojt_status_history` (`id`, `student_id`, `old_status`, `new_status`, `date_assigned`, `date_changed`, `old_hte_id`, `new_hte_id`) VALUES
-(5, 4, 'deployed', 'deployed', '2025-03-30 02:12:30', '2025-03-30 02:34:03', 1, 3),
-(6, 4, 'deployed', 'deployed', '2025-03-30 02:34:03', '2025-03-30 02:34:34', 3, 4),
-(7, 18, 'deployed', 'pending', '2025-03-30 02:01:51', '2025-03-30 02:35:12', 3, 1),
-(8, 39, 'pending', 'deployed', '2025-03-31 20:48:41', '2025-03-31 20:49:00', NULL, 6),
-(9, 39, 'deployed', 'deployed', '2025-03-31 20:49:00', '2025-03-31 21:12:20', 6, 7),
-(10, 39, 'deployed', 'deployed', '2025-03-31 21:12:20', '2025-03-31 21:12:26', 7, 6),
-(11, 39, 'deployed', 'pulled-out', '2025-03-31 21:12:26', '2025-04-01 00:30:24', 6, 6);
+(19, 50, 'pending', 'deployed', '2025-06-18 23:04:07', '2025-06-18 23:13:06', NULL, 10),
+(20, 49, 'pending', 'deployed', '2025-06-18 23:02:41', '2025-06-18 23:13:26', NULL, 11),
+(21, 50, 'deployed', 'deployed', '2025-06-18 23:13:06', '2025-06-18 23:15:56', 10, 12),
+(22, 50, 'deployed', 'pulled-out', '2025-06-18 23:15:56', '2025-06-18 23:16:25', 12, 12),
+(23, 50, 'pulled-out', 'deployed', '2025-06-18 23:16:25', '2025-06-18 23:16:36', 12, 10),
+(24, 49, 'deployed', 'pending', '2025-06-18 23:13:26', '2025-06-18 23:20:49', 11, 11),
+(25, 49, 'pending', 'deployed', '2025-06-19 00:37:41', '2025-06-19 00:38:02', 11, 11),
+(26, 50, 'deployed', 'pending', '2025-06-19 02:04:03', '2025-06-19 02:09:01', 10, 10),
+(27, 50, 'pending', 'deployed', '2025-06-19 02:09:01', '2025-06-19 02:09:17', 10, 10);
 
 -- --------------------------------------------------------
 
@@ -353,7 +313,15 @@ CREATE TABLE `sessions` (
   `session_data` text NOT NULL,
   `last_activity` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `creation_time` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `sessions`
+--
+
+INSERT INTO `sessions` (`sessions_id`, `users_id`, `session_data`, `last_activity`, `creation_time`) VALUES
+('h7l2lljr0fo3m9lmnbaqbq3cvc', 50, '{\"user_id\":50,\"role\":\"student\",\"institute\":\"Institute of Engineering and Applied Technology\",\"username\":\"Prince\"}', '2025-06-18 17:04:31', '2025-06-18 17:04:31'),
+('ttcvm0fad36dmh2m1qohje9c0r', 45, '{\"user_id\":45,\"role\":\"coordinator\",\"institute\":\"Institute of Engineering and Applied Technology\",\"username\":\"dave\"}', '2025-06-18 16:59:09', '2025-06-18 16:59:09');
 
 -- --------------------------------------------------------
 
@@ -370,8 +338,20 @@ CREATE TABLE `uploads` (
   `upload_status` enum('accepted','processing','rejected') DEFAULT 'processing',
   `submitted_on` datetime DEFAULT current_timestamp(),
   `updated_on` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `checkedby_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+  `checkedby_id` int(11) DEFAULT NULL,
+  `original_file_name` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `uploads`
+--
+
+INSERT INTO `uploads` (`uploads_id`, `filename_id`, `file_name`, `filepath`, `uploadedby_id`, `upload_status`, `submitted_on`, `updated_on`, `checkedby_id`, `original_file_name`) VALUES
+(54, 46, 'Derrick_Cruz_Internship Contract Agreement_znagtb.pdf', '../../upload_hte/Derrick_Cruz_Internship Contract Agreement_znagtb.pdf', 47, 'accepted', '2025-06-18 22:19:04', '2025-06-19 00:47:47', 45, NULL),
+(55, 46, 'Annie_Madis_Internship Contract Agreement_36vnyt.pdf', '../../upload_hte/Annie_Madis_Internship Contract Agreement_36vnyt.pdf', 48, 'processing', '2025-06-18 22:19:35', '2025-06-18 22:19:35', NULL, NULL),
+(56, 50, 'Prince_Dela Cruz_Journal Task 1_j3tylo.pdf', '../../upload_journal/Prince_Dela Cruz_Journal Task 1_j3tylo.pdf', 50, 'accepted', '2025-06-19 00:43:44', '2025-06-19 00:44:24', 45, 'BunaladeMedel_IT500_OJTHardbound.pdf'),
+(57, 49, 'Derrick_Cruz_Memorandum of Agreement_2f6tyu.pdf', '../../upload_hte/Derrick_Cruz_Memorandum of Agreement_2f6tyu.pdf', 47, 'processing', '2025-06-19 00:58:58', '2025-06-19 00:58:58', NULL, NULL),
+(58, 1, 'Prince_Dela Cruz_Internship Application Form_wfxqct.pdf', '../../upload_pre/Prince_Dela Cruz_Internship Application Form_wfxqct.pdf', 50, 'rejected', '2025-06-19 01:05:15', '2025-06-19 01:07:19', 45, NULL);
 
 -- --------------------------------------------------------
 
@@ -414,24 +394,21 @@ CREATE TABLE `users` (
   `time_in` datetime DEFAULT NULL,
   `time_out` datetime DEFAULT NULL,
   `remarks` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`users_id`, `coordinator_id`, `fname`, `mname`, `lname`, `sex`, `address`, `phone`, `institute`, `school_id`, `course`, `hte_id`, `year_section`, `designation`, `role`, `email`, `username`, `password`, `temppass`, `otp`, `activate`, `guid`, `image_profile`, `chat_stats`, `users_account`, `created_on`, `updated_on`, `attended`, `assigned`, `ojt_stats`, `is_completed`, `time_in`, `time_out`, `remarks`) VALUES
-(1, NULL, 'Prof. Michelle', 'M.', 'Cortez', 'male', '-', '', 'Institute of Engineering and Applied Technology', '0987654321', NULL, NULL, NULL, 'Full Stackc', 'admin', 'ieatadmin@gmail.com', 'ieatadmin', '$2y$10$5r97/mooj32K5MZhY85yYuFfeBaMh.GQRRBcFRu14idxwfqAM0qbe', NULL, NULL, 0, NULL, 'KtbGo6.jpg', 'offline', 'enabled', '2025-03-07 13:27:26', '2025-04-11 04:27:34', 'no', NULL, 'pending', NULL, NULL, NULL, NULL),
-(2, NULL, 'Nerilyn', 'J.', 'Victoria', 'female', '', '', 'Institute of Management', '0', NULL, NULL, NULL, 'Dean', 'admin', 'im@gmail.com', 'imadmin', '$2y$10$W6sIvlDFNWeW4e9.S8mGnuYXzL1HwTafrg4NXdqewSVGRR4WsQUiK', NULL, '777687', 0, NULL, 'AFHWZq.png', 'offline', 'enabled', '2025-03-07 14:56:59', '2025-04-11 03:57:08', 'no', NULL, 'pending', NULL, NULL, NULL, NULL),
-(4, NULL, 'mary', 'c', 'jane', 'female', 'san miguel', '09876543211', 'Institute of Engineering and Applied Technology', '987654321', 'BS in Information Technology', 4, NULL, NULL, 'student', NULL, 'mary', '$2y$10$KCaV/scZ/R0LRT8HPiU.be3OS2Vqslc/xv.zWnvXV4PhRplNcgah.', NULL, NULL, 1, 'iF2YVO', 'Y8v2s3.jpg', 'offline', 'enabled', '2025-03-08 12:35:30', '2025-04-05 19:36:36', 'yes', NULL, 'deployed', NULL, NULL, NULL, NULL),
-(18, NULL, 'aljon1', 'c', 'dumlao', 'male', 'san miguel', '09876543211', 'Institute of Engineering and Applied Technology', '09876543211', 'BS in Information Technology', 1, NULL, NULL, 'student', 'menongdc@gmail.com', 'aljon', '$2y$10$KCaV/scZ/R0LRT8HPiU.be3OS2Vqslc/xv.zWnvXV4PhRplNcgah.', NULL, NULL, 1, 'F1NorU', 'UrFhWA.jpg', 'offline', 'enabled', '2025-03-08 14:02:22', '2025-03-29 18:35:12', 'yes', NULL, 'pending', NULL, NULL, NULL, NULL),
-(19, NULL, 'Jermyn', 'C', 'Cruz', 'female', 'asfasfasfa', '098765321', 'Institute of Engineering and Applied Technology', '098765411D', 'BS in Information Technology', NULL, NULL, 'Coordinator', 'coordinator', 'ieatcoordinator@gmail.com', 'ieatcoordinator', '$2y$10$gnw/QQ5H68vkHIW1LLZxc.PVMU16pxOm2fvpX.hgwu5.ek8Uj6n2q', '$2y$10$gnw/QQ5H68vkHIW1LLZxc.PVMU16pxOm2fvpX.hgwu5.ek8Uj6n2q', NULL, 0, NULL, 'sCMpcW.jpg', 'offline', 'enabled', '2025-03-11 08:56:42', '2025-04-05 18:56:49', 'no', NULL, 'pending', NULL, NULL, NULL, NULL),
-(20, NULL, 'Nerilyn', '', 'Victoria', 'female', NULL, NULL, 'Institute of Management', '2025-002', 'BS in Business Administration', NULL, NULL, NULL, 'coordinator', NULL, 'imcoordinator', '$2y$10$qpyyutjT5UAKSXqiP4USweTEGCfMxLewU9CyfA0DzNs4bt8mlCKiy', '$2y$10$qpyyutjT5UAKSXqiP4USweTEGCfMxLewU9CyfA0DzNs4bt8mlCKiy', NULL, 0, NULL, 'default.jpg', 'offline', 'enabled', '2025-03-11 09:32:04', '2025-04-11 04:10:15', 'no', NULL, 'pending', NULL, NULL, NULL, NULL),
-(36, 19, 'rb', NULL, 'madis', 'female', NULL, NULL, 'Institute of Engineering and Applied Technology', NULL, 'BS in Information Technology', NULL, NULL, 'trainer1', 'trainer', 'rb@gmail.com', 'rbmadis', '$2y$10$iyH4AL680Rrv5wrr98LlxubcqZ/FMRMOI3wPl1qmIvTpDKvK1Unbi', '$2y$10$iyH4AL680Rrv5wrr98LlxubcqZ/FMRMOI3wPl1qmIvTpDKvK1Unbi', NULL, 0, NULL, '5oYgMe.jpg', 'offline', 'enabled', '2025-03-28 09:56:26', '2025-04-10 22:39:19', 'no', NULL, 'pending', NULL, NULL, NULL, NULL),
-(37, 19, 'med', NULL, 'bunalade', 'male', NULL, NULL, 'Institute of Engineering and Applied Technology', NULL, 'BS in Information Technology', NULL, NULL, '', 'trainer', '', 'meds', '$2y$10$iyH4AL680Rrv5wrr98LlxubcqZ/FMRMOI3wPl1qmIvTpDKvK1Unbi', '$2y$10$Yxk7EjcGyOV.uWK5CR.bRuiNtZzlwBqkTUPAAFCPoPtKkJaiGf3qq', NULL, 0, NULL, 'siplogo.png', 'offline', 'enabled', '2025-03-28 09:58:11', '2025-03-31 12:07:05', 'no', NULL, 'pending', NULL, NULL, NULL, NULL),
-(38, 19, 'jane', NULL, 'dd', 'female', NULL, NULL, 'Institute of Engineering and Applied Technology', NULL, 'BS in Information Technology', NULL, NULL, 'trainer', 'trainer', 'jane@gmail.com', 'janed', '$2y$10$iMAmNh0RTLAsdtLBcSk6V.S3CUDyoLk3GJ4681AKQZ9rwcTfJe9ZW', '$2y$10$iMAmNh0RTLAsdtLBcSk6V.S3CUDyoLk3GJ4681AKQZ9rwcTfJe9ZW', NULL, 0, 'asdasd', 'siplogo.png', 'offline', 'enabled', '2025-03-28 11:13:11', '2025-03-31 12:48:05', 'no', NULL, 'pending', NULL, NULL, NULL, NULL),
-(39, NULL, 'im student', 'f', 'dd', 'female', 'sdfds', NULL, 'Institute of Management', '2025-001', 'BS in Business Administration', 6, NULL, NULL, 'student', NULL, 'imstudent', '$2y$10$iyH4AL680Rrv5wrr98LlxubcqZ/FMRMOI3wPl1qmIvTpDKvK1Unbi', NULL, NULL, 1, NULL, 'ELXJew.png', 'offline', 'enabled', '2025-03-31 12:44:46', '2025-04-11 04:11:05', 'yes', NULL, 'pulled-out', NULL, NULL, NULL, NULL),
-(40, 20, 'im trainer', NULL, 'dd', 'female', NULL, NULL, 'Institute of Management', '2025-003', 'BS in Business Administration', NULL, NULL, NULL, 'trainer', NULL, 'imtrainer', '$2y$10$f5JGGDgnP1VidgbBQlDKfe6epCJYr1vb7klMSq4I7RmhE.tPmQFmq', '$2y$10$f5JGGDgnP1VidgbBQlDKfe6epCJYr1vb7klMSq4I7RmhE.tPmQFmq', NULL, 0, NULL, 'siplogo.png', 'offline', 'enabled', '2025-03-31 06:49:34', '2025-04-11 04:11:06', 'no', NULL, 'pending', NULL, NULL, NULL, NULL);
+(1, NULL, 'Medel', 'C.', 'Bunalade', 'male', 'Balaong, San Miguel,  Bulacan', '', 'Institute of Engineering and Applied Technology', '', NULL, NULL, NULL, 'Dean IEAT', 'admin', 'ieatadmin@gmail.com', 'ieatadmin', '$2y$10$5r97/mooj32K5MZhY85yYuFfeBaMh.GQRRBcFRu14idxwfqAM0qbe', NULL, NULL, 0, NULL, NULL, 'offline', 'enabled', '2025-03-07 13:27:26', '2025-06-18 16:57:24', 'no', NULL, 'pending', NULL, '2025-06-19 00:57:16', '2025-06-19 00:57:24', NULL),
+(2, NULL, 'Aljohn', 'P.', 'Dumlao', 'male', 'San Jose, San Miguel,  Bulacan', '', 'Institute of Management', '', NULL, NULL, NULL, 'Dean IM', 'admin', 'im@gmail.com', 'imadmin', '$2y$10$W6sIvlDFNWeW4e9.S8mGnuYXzL1HwTafrg4NXdqewSVGRR4WsQUiK', NULL, NULL, 0, NULL, NULL, 'offline', 'enabled', '2025-03-07 14:56:59', '2025-06-18 14:10:27', 'no', NULL, 'pending', NULL, '2025-06-18 22:04:17', '2025-06-18 22:10:27', NULL),
+(45, NULL, 'Mr. Dave', NULL, 'Macalinao', 'male', NULL, NULL, 'Institute of Engineering and Applied Technology', NULL, 'BS in Information Technology', NULL, NULL, NULL, 'coordinator', NULL, 'dave', '$2y$10$Km0E/GA2byw9o3HMx6/nJeVzGdycY8bbiyc4GngyuZOQHwPptgZy2', '$2y$10$Km0E/GA2byw9o3HMx6/nJeVzGdycY8bbiyc4GngyuZOQHwPptgZy2', NULL, 0, NULL, 'siplogo.png', 'offline', 'enabled', '2025-06-18 08:05:49', '2025-06-18 23:19:54', 'no', NULL, 'pending', NULL, '2025-06-19 01:54:39', '2025-06-19 07:19:54', NULL),
+(46, NULL, 'Nerilyn', NULL, 'Victoria', 'female', NULL, NULL, 'Institute of Management', NULL, 'BS in Hospitality Management', NULL, NULL, NULL, 'coordinator', NULL, 'neri', '$2y$10$wm3bzKnPEMlvLOryvKBLa.yhJr5veF325K9WxQSTBPms3Hc0yBTAG', '$2y$10$wm3bzKnPEMlvLOryvKBLa.yhJr5veF325K9WxQSTBPms3Hc0yBTAG', NULL, 0, NULL, 'siplogo.png', 'offline', 'enabled', '2025-06-18 08:07:07', '2025-06-18 16:38:56', 'no', NULL, 'pending', NULL, '2025-06-19 00:38:36', '2025-06-19 00:38:56', NULL),
+(47, 45, 'Derrick', NULL, 'Cruz', 'male', NULL, NULL, 'Institute of Engineering and Applied Technology', NULL, 'BS in Information Technology', NULL, NULL, 'Team lead', 'trainer', NULL, 'derrick', '$2y$10$bvNkFyR69mMMzJfU.UlQ6uOe83ElkevKm7U5iWFM9WBHxaBhNA6dO', '$2y$10$bvNkFyR69mMMzJfU.UlQ6uOe83ElkevKm7U5iWFM9WBHxaBhNA6dO', NULL, 0, NULL, 'siplogo.png', 'offline', 'enabled', '2025-06-18 08:13:57', '2025-06-18 18:46:54', 'no', NULL, 'pending', NULL, '2025-06-19 02:04:10', '2025-06-19 02:46:54', NULL),
+(48, 46, 'Annie', NULL, 'Madis', 'female', NULL, NULL, 'Institute of Management', NULL, 'BS in Hospitality Management', NULL, NULL, 'HR', 'trainer', NULL, 'annie', '$2y$10$2bXAlmT0c2kGaDpUHvVp3OQyXtbgnx7F1GkYP4HxE/qUe1Z/uYbvO', '$2y$10$2bXAlmT0c2kGaDpUHvVp3OQyXtbgnx7F1GkYP4HxE/qUe1Z/uYbvO', NULL, 0, NULL, 'siplogo.png', 'offline', 'enabled', '2025-06-18 08:15:38', '2025-06-18 14:21:24', 'no', NULL, 'pending', NULL, '2025-06-18 22:21:18', '2025-06-18 22:21:24', NULL),
+(49, NULL, 'Aljohn', 'Pomarejos', 'Dumlao', 'male', 'San Jose, San Miguel,  Bulacan', '09302377567', 'Institute of Management', '2018101104', 'BS in Hospitality Management', 11, NULL, NULL, 'student', 'aljohndumlaobasc@gmail.com', 'aljohn', '$2y$10$Ew.c117ZRE2/GtG80h5joOZlJAEX67fmmthHfNwixW6Fgf/ozS67u', NULL, NULL, 1, 'x5E83J', NULL, 'offline', 'enabled', '2025-06-18 14:24:55', '2025-06-18 16:39:14', 'no', NULL, 'deployed', NULL, '2025-06-19 00:39:04', '2025-06-19 00:39:14', NULL),
+(50, NULL, 'Prince', 'C.', 'Dela Cruz', 'male', 'Balaong, San Miguel,  Bulacan', '09977325599', 'Institute of Engineering and Applied Technology', '2018100593', 'BS in Information Technology', 10, NULL, NULL, 'student', 'pd776963@gmail.com', 'Prince', '$2y$10$XZ2LJx.o6QUn1/tRwrmgJeQHKXOc9f0XuRg49CNkOvqeDpmA6aAGG', NULL, NULL, 1, 'DeYG6k', NULL, 'offline', 'enabled', '2025-06-18 14:27:22', '2025-06-18 18:09:17', 'no', NULL, 'deployed', NULL, '2025-06-19 01:41:58', '2025-06-19 02:04:03', NULL);
 
 --
 -- Triggers `users`
@@ -475,6 +452,18 @@ ALTER TABLE `announcements`
   ADD KEY `fk_announce_user` (`users_id`);
 
 --
+-- Indexes for table `attendance`
+--
+ALTER TABLE `attendance`
+  ADD PRIMARY KEY (`attendance_id`),
+  ADD UNIQUE KEY `school_id` (`school_id`),
+  ADD UNIQUE KEY `email` (`email`),
+  ADD UNIQUE KEY `qr_code_data` (`qr_code_data`),
+  ADD KEY `idx_ip_timestamp` (`ip_address`,`timestamp`),
+  ADD KEY `idx_scanned_ip_timestamp` (`scanned_by_ip_address`,`scanned_timestamp`),
+  ADD KEY `idx_scanned_timestamp` (`scanned_timestamp`);
+
+--
 -- Indexes for table `chat_messages`
 --
 ALTER TABLE `chat_messages`
@@ -502,7 +491,8 @@ ALTER TABLE `comments`
 -- Indexes for table `filename`
 --
 ALTER TABLE `filename`
-  ADD PRIMARY KEY (`filename_id`);
+  ADD PRIMARY KEY (`filename_id`),
+  ADD KEY `fk_user_id` (`user_id`);
 
 --
 -- Indexes for table `file_comments`
@@ -572,19 +562,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `announcements`
 --
 ALTER TABLE `announcements`
-  MODIFY `announcements_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `announcements_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- AUTO_INCREMENT for table `attendance`
+--
+ALTER TABLE `attendance`
+  MODIFY `attendance_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `chat_messages`
 --
 ALTER TABLE `chat_messages`
-  MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=191;
 
 --
 -- AUTO_INCREMENT for table `chat_notifications`
 --
 ALTER TABLE `chat_notifications`
-  MODIFY `notif_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `notif_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=194;
 
 --
 -- AUTO_INCREMENT for table `comments`
@@ -596,43 +592,43 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT for table `filename`
 --
 ALTER TABLE `filename`
-  MODIFY `filename_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `filename_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `file_comments`
 --
 ALTER TABLE `file_comments`
-  MODIFY `file_comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
+  MODIFY `file_comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=130;
 
 --
 -- AUTO_INCREMENT for table `hte`
 --
 ALTER TABLE `hte`
-  MODIFY `hte_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `hte_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `notifications_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1826;
+  MODIFY `notifications_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1870;
 
 --
 -- AUTO_INCREMENT for table `ojt_status_history`
 --
 ALTER TABLE `ojt_status_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `uploads`
 --
 ALTER TABLE `uploads`
-  MODIFY `uploads_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `uploads_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `users_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `users_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- Constraints for dumped tables
@@ -664,6 +660,12 @@ ALTER TABLE `chat_notifications`
 ALTER TABLE `comments`
   ADD CONSTRAINT `fk_comments_announcement` FOREIGN KEY (`announcements_id`) REFERENCES `announcements` (`announcements_id`) ON DELETE CASCADE,
   ADD CONSTRAINT `fk_comments_user` FOREIGN KEY (`users_id`) REFERENCES `users` (`users_id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `filename`
+--
+ALTER TABLE `filename`
+  ADD CONSTRAINT `fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`users_id`) ON DELETE SET NULL;
 
 --
 -- Constraints for table `file_comments`

@@ -45,11 +45,16 @@ $usernameDisplay = !empty($user['fname']) ? htmlspecialchars($user['fname']) : h
 
     <!-- Custom CSS (Separate Files) -->
     <link rel="icon" type="image/ico" href="../../resources/siplogo.ico">
-    <link rel="stylesheet" href="../../announcement/css/topbar.css">
+       <link rel="stylesheet" href="../css/topbar.css">
+    <link rel="stylesheet" href="../css/leftsidebar.css">
+    <link rel="stylesheet" href="../css/dashboard_body.css">
+    <link rel="stylesheet" href="../css/announcement.css">
+    <link rel="stylesheet" href="../announcement/css/announcement_table.css">
+    <!-- <link rel="stylesheet" href="../../announcement/css/topbar.css">
     <link rel="stylesheet" href="../../announcement/css/leftsidebar.css">
     <link rel="stylesheet" href="../../announcement/css/dashboard_body.css">
     <link rel="stylesheet" href="../../announcement/css/announcement.css">
-    <link rel="stylesheet" href="../../announcement/css/announcement_table.css">
+    <link rel="stylesheet" href="../../announcement/css/announcement_table.css"> -->
 
 </head>
 

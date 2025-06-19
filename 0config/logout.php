@@ -2,6 +2,9 @@
 session_start();
 include("../0config/database.php");
 
+// Set timezone to Asia/Manila
+date_default_timezone_set('Asia/Manila');
+
 if (isset($_SESSION["user_id"])) {
     $user_id = $_SESSION["user_id"];
     $session_id = session_id();

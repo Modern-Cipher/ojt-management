@@ -45,11 +45,16 @@ $usernameDisplay = !empty($user['fname']) ? htmlspecialchars($user['fname']) : h
 
     <!-- Custom CSS (Separate Files) -->
     <link rel="icon" type="image/ico" href="../../resources/siplogo.ico">
-    <link rel="stylesheet" href="../../announcement/css/topbar.css">
+    <link rel="stylesheet" href="../css/topbar.css">
+    <link rel="stylesheet" href="../css/leftsidebar.css">
+    <link rel="stylesheet" href="../css/dashboard_body.css">
+    <link rel="stylesheet" href="../css/announcement.css">
+    <link rel="stylesheet" href="../css/announcement_table.css">
+    <!-- <link rel="stylesheet" href="../../announcement/css/topbar.css">
     <link rel="stylesheet" href="../../announcement/css/leftsidebar.css">
     <link rel="stylesheet" href="../../announcement/css/dashboard_body.css">
     <link rel="stylesheet" href="../../announcement/css/announcement.css">
-    <link rel="stylesheet" href="../../announcement/css/announcement_table.css">
+    <link rel="stylesheet" href="../../announcement/css/announcement_table.css"> -->
 
 </head>
 
@@ -83,7 +88,8 @@ $usernameDisplay = !empty($user['fname']) ? htmlspecialchars($user['fname']) : h
         </div>
     </nav>
     <!-- Notification Modal -->
-    <div class="modal fade" id="notificationModal" tabindex="-1" aria-labelledby="notificationModalLabel" aria-hidden="true">
+    <div class="modal fade" id="notificationModal" tabindex="-1" aria-labelledby="notificationModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-dialog-end">
             <div class="modal-content notification-modal">
                 <div class="modal-header">
@@ -126,8 +132,11 @@ $usernameDisplay = !empty($user['fname']) ? htmlspecialchars($user['fname']) : h
                 <ul class="sidebar-menu">
                     <li>
                         <a href="../../1admin/admindashboard.php" data-bs-toggle="tooltip" title="Dashboard">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="34" height="34">
-                                <path d="M9 3a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-6a2 2 0 0 1 2 -2zm0 12a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-2a2 2 0 0 1 2 -2zm10 -4a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-6a2 2 0 0 1 2 -2zm0 -8a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-2a2 2 0 0 1 2 -2z"></path>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="34"
+                                height="34">
+                                <path
+                                    d="M9 3a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-6a2 2 0 0 1 2 -2zm0 12a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-2a2 2 0 0 1 2 -2zm10 -4a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-6a2 2 0 0 1 2 -2zm0 -8a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-2a2 2 0 0 1 2 -2z">
+                                </path>
                             </svg>
                         </a>
                     </li>
@@ -135,11 +144,15 @@ $usernameDisplay = !empty($user['fname']) ? htmlspecialchars($user['fname']) : h
                         <!-- Main Item with Toggle -->
                         <li data-bs-toggle="tooltip" title="Internship Reports">
                             <a href="#" class="menu-toggle" data-bs-toggle="collapse" data-bs-target="#submenu1">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="34" height="34" stroke-width="2">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="34"
+                                    height="34" stroke-width="2">
                                     <path d="M8 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h5.697"></path>
                                     <path d="M18 14v4h4"></path>
                                     <path d="M18 11v-4a2 2 0 0 0 -2 -2h-2"></path>
-                                    <path d="M8 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"></path>
+                                    <path
+                                        d="M8 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z">
+                                    </path>
                                     <path d="M18 18m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path>
                                     <path d="M8 11h4"></path>
                                     <path d="M8 15h3"></path>
@@ -151,8 +164,11 @@ $usernameDisplay = !empty($user['fname']) ? htmlspecialchars($user['fname']) : h
                         <!-- Sub-items (Initially Collapsed) -->
                         <ul id="submenu1" class="collapse sub-menu">
                             <li>
-                                <a href="../../1admin/internassigned/internassigned.php" data-bs-toggle="tooltip" title="List of Assigned Student">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="26" height="26" stroke-width="2">
+                                <a href="../../1admin/internassigned/internassigned.php" data-bs-toggle="tooltip"
+                                    title="List of Assigned Student">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="26"
+                                        height="26" stroke-width="2">
                                         <path d="M10 13a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
                                         <path d="M8 21v-1a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v1"></path>
                                         <path d="M15 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
@@ -163,8 +179,11 @@ $usernameDisplay = !empty($user['fname']) ? htmlspecialchars($user['fname']) : h
                                 </a>
                             </li>
                             <li>
-                                <a href="../../1admin/establishment/establishment.php" data-bs-toggle="tooltip" title="Host Training Establishment">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="26" height="26" stroke-width="2">
+                                <a href="../../1admin/establishment/establishment.php" data-bs-toggle="tooltip"
+                                    title="Host Training Establishment">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="26"
+                                        height="26" stroke-width="2">
                                         <path d="M3 21l18 0"></path>
                                         <path d="M9 8l1 0"></path>
                                         <path d="M9 12l1 0"></path>
@@ -182,8 +201,12 @@ $usernameDisplay = !empty($user['fname']) ? htmlspecialchars($user['fname']) : h
                         <!-- Main Item with Toggle -->
                         <li data-bs-toggle="tooltip" title="System Management">
                             <a href="#" class="menu-toggle" data-bs-toggle="collapse" data-bs-target="#submenu2">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="34" height="34" stroke-width="2">
-                                    <path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z"></path>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="34"
+                                    height="34" stroke-width="2">
+                                    <path
+                                        d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z">
+                                    </path>
                                     <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"></path>
                                 </svg>
                             </a>
@@ -193,8 +216,11 @@ $usernameDisplay = !empty($user['fname']) ? htmlspecialchars($user['fname']) : h
                         <!-- Sub-items (Initially Collapsed) -->
                         <ul id="submenu2" class="collapse sub-menu">
                             <li>
-                                <a href="../../1admin/user_account/user_account.php" data-bs-toggle="tooltip" title="Manage Accounts">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="26" height="26" stroke-width="2">
+                                <a href="../../1admin/user_account/user_account.php" data-bs-toggle="tooltip"
+                                    title="Manage Accounts">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="26"
+                                        height="26" stroke-width="2">
                                         <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
                                         <path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
                                         <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855"></path>
@@ -206,9 +232,15 @@ $usernameDisplay = !empty($user['fname']) ? htmlspecialchars($user['fname']) : h
 
                     <li>
                         <a href="../../1admin/chat/chat.php" data-bs-toggle="tooltip" title="Chat Room">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" width="34" height="34" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor">
-                                <path d="M16.5 10c3.038 0 5.5 2.015 5.5 4.5c0 1.397 -.778 2.645 -2 3.47l0 2.03l-1.964 -1.178a6.649 6.649 0 0 1 -1.536 .178c-3.038 0 -5.5 -2.015 -5.5 -4.5s2.462 -4.5 5.5 -4.5z"></path>
-                                <path d="M11.197 15.698c-.69 .196 -1.43 .302 -2.197 .302a8.008 8.008 0 0 1 -2.612 -.432l-2.388 1.432v-2.801c-1.237 -1.082 -2 -2.564 -2 -4.199c0 -3.314 3.134 -6 7 -6c3.782 0 6.863 2.57 7 5.785l0 .233"></path>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" width="34"
+                                height="34" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"
+                                stroke="currentColor">
+                                <path
+                                    d="M16.5 10c3.038 0 5.5 2.015 5.5 4.5c0 1.397 -.778 2.645 -2 3.47l0 2.03l-1.964 -1.178a6.649 6.649 0 0 1 -1.536 .178c-3.038 0 -5.5 -2.015 -5.5 -4.5s2.462 -4.5 5.5 -4.5z">
+                                </path>
+                                <path
+                                    d="M11.197 15.698c-.69 .196 -1.43 .302 -2.197 .302a8.008 8.008 0 0 1 -2.612 -.432l-2.388 1.432v-2.801c-1.237 -1.082 -2 -2.564 -2 -4.199c0 -3.314 3.134 -6 7 -6c3.782 0 6.863 2.57 7 5.785l0 .233">
+                                </path>
                                 <path d="M10 8h.01"></path>
                                 <path d="M7 8h.01"></path>
                                 <path d="M15 14h.01"></path>
@@ -230,9 +262,13 @@ $usernameDisplay = !empty($user['fname']) ? htmlspecialchars($user['fname']) : h
                             <div class="d-flex justify-content-between align-items-center mb-3 announcement-header">
                                 <h5 class="announcement-title">Announcement</h5>
                                 <div class="d-flex align-items-center">
-                                    <input type="text" class="form-control search-input" id="searchInput" placeholder="Search...">
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addAnnouncementModal" data-tooltip="Add New Announcement">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" width="20" height="20" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor">
+                                    <input type="text" class="form-control search-input" id="searchInput"
+                                        placeholder="Search...">
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                        data-bs-target="#addAnnouncementModal" data-tooltip="Add New Announcement">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                            width="20" height="20" stroke-width="3" stroke-linejoin="round"
+                                            stroke-linecap="round" stroke="currentColor">
                                             <path d="M12 5l0 14"></path>
                                             <path d="M5 12l14 0"></path>
                                         </svg>
@@ -242,26 +278,31 @@ $usernameDisplay = !empty($user['fname']) ? htmlspecialchars($user['fname']) : h
                             </div>
 
                             <!-- ✅ Add Announcement Modal -->
-                            <div class="modal fade" id="addAnnouncementModal" tabindex="-1" aria-labelledby="addAnnouncementLabel" aria-hidden="true">
+                            <div class="modal fade" id="addAnnouncementModal" tabindex="-1"
+                                aria-labelledby="addAnnouncementLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <form action="../../1admin/announcement/add_announcement.php" method="POST">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="addAnnouncementLabel">Add New Announcement</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                <h5 class="modal-title" id="addAnnouncementLabel">Add New Announcement
+                                                </h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
                                             </div>
 
                                             <div class="modal-body">
                                                 <!-- Title -->
                                                 <div class="mb-3">
                                                     <label for="title" class="form-label">Title</label>
-                                                    <input type="text" class="form-control" name="title" id="title" required>
+                                                    <input type="text" class="form-control" name="title" id="title"
+                                                        required>
                                                 </div>
 
                                                 <!-- Content -->
                                                 <div class="mb-3">
                                                     <label for="content" class="form-label">Content</label>
-                                                    <textarea class="form-control" name="content" id="content" rows="4" required></textarea>
+                                                    <textarea class="form-control" name="content" id="content" rows="4"
+                                                        required></textarea>
                                                 </div>
 
                                                 <!-- Role -->
@@ -414,7 +455,8 @@ $usernameDisplay = !empty($user['fname']) ? htmlspecialchars($user['fname']) : h
     </div>
 
     <!-- ✅ Edit Announcement Modal -->
-    <div class="modal fade" id="editAnnouncementModal" tabindex="-1" aria-labelledby="editAnnouncementLabel" aria-hidden="true">
+    <div class="modal fade" id="editAnnouncementModal" tabindex="-1" aria-labelledby="editAnnouncementLabel"
+        aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <form action="../../1admin/announcement/update_announcement.php" method="POST">
@@ -436,7 +478,8 @@ $usernameDisplay = !empty($user['fname']) ? htmlspecialchars($user['fname']) : h
                         <!-- Content -->
                         <div class="mb-3">
                             <label for="edit_content" class="form-label">Content</label>
-                            <textarea class="form-control" name="content" id="edit_content" rows="4" required></textarea>
+                            <textarea class="form-control" name="content" id="edit_content" rows="4"
+                                required></textarea>
                         </div>
 
                         <!-- Role -->
@@ -460,11 +503,11 @@ $usernameDisplay = !empty($user['fname']) ? htmlspecialchars($user['fname']) : h
     </div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             const editButtons = document.querySelectorAll(".edit-btn");
 
             editButtons.forEach(button => {
-                button.addEventListener("click", function() {
+                button.addEventListener("click", function () {
                     const id = this.getAttribute("data-id");
                     const title = this.getAttribute("data-title");
                     const content = this.getAttribute("data-content");
@@ -480,19 +523,19 @@ $usernameDisplay = !empty($user['fname']) ? htmlspecialchars($user['fname']) : h
     </script>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             document.querySelectorAll(".status-toggle").forEach(toggle => {
-                toggle.addEventListener("change", function() {
+                toggle.addEventListener("change", function () {
                     const announcementId = this.getAttribute("data-id");
                     const newStatus = this.checked ? "posted" : "drafted";
 
                     fetch("../../1admin/announcement/toggle_status.php", {
-                            method: "POST",
-                            headers: {
-                                "Content-Type": "application/x-www-form-urlencoded"
-                            },
-                            body: `id=${announcementId}&status=${newStatus}`
-                        })
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/x-www-form-urlencoded"
+                        },
+                        body: `id=${announcementId}&status=${newStatus}`
+                    })
                         .then(res => res.text())
                         .then(response => {
                             console.log(response);
@@ -519,23 +562,23 @@ $usernameDisplay = !empty($user['fname']) ? htmlspecialchars($user['fname']) : h
 
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             const commentForm = document.getElementById("commentForm");
             const commentInput = document.getElementById("commentText");
             const commentSection = document.querySelector(".comment-section");
             const commentMessage = document.getElementById("commentMessage");
 
             if (commentForm && commentInput && commentSection) {
-                commentForm.addEventListener("submit", function(e) {
+                commentForm.addEventListener("submit", function (e) {
                     e.preventDefault();
 
                     const formData = new FormData(commentForm);
                     const announcementId = commentForm.querySelector("input[name='announcement_id']").value;
 
                     fetch("../../1admin/announcement/save_comment.php", {
-                            method: "POST",
-                            body: formData
-                        })
+                        method: "POST",
+                        body: formData
+                    })
                         .then(response => response.text())
                         .then(data => {
                             if (data.trim() === "success") {
@@ -566,19 +609,19 @@ $usernameDisplay = !empty($user['fname']) ? htmlspecialchars($user['fname']) : h
 
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             document.querySelectorAll(".status-toggle").forEach(toggle => {
-                toggle.addEventListener("change", function() {
+                toggle.addEventListener("change", function () {
                     const announcementId = this.getAttribute("data-id");
                     const newStatus = this.checked ? "posted" : "drafted";
 
                     fetch("../../1admin/announcement/toggle_status.php", {
-                            method: "POST",
-                            headers: {
-                                "Content-Type": "application/x-www-form-urlencoded"
-                            },
-                            body: `id=${announcementId}&status=${newStatus}`
-                        })
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/x-www-form-urlencoded"
+                        },
+                        body: `id=${announcementId}&status=${newStatus}`
+                    })
                         .then(res => res.text())
                         .then(response => {
                             console.log("Status toggled:", response);
@@ -614,10 +657,10 @@ $usernameDisplay = !empty($user['fname']) ? htmlspecialchars($user['fname']) : h
 
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             // Initialize Bootstrap tooltips and auto-adjust placement
             var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-            var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
                 return new bootstrap.Tooltip(tooltipTriggerEl, {
                     boundary: 'window', // Prevents tooltip from going off-screen
                     fallbackPlacements: ['top', 'bottom', 'left', 'right'], // Auto-adjust
@@ -626,8 +669,8 @@ $usernameDisplay = !empty($user['fname']) ? htmlspecialchars($user['fname']) : h
             });
 
             // Hide Bootstrap tooltip on click
-            document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(function(element) {
-                element.addEventListener("click", function() {
+            document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(function (element) {
+                element.addEventListener("click", function () {
                     var tooltipInstance = bootstrap.Tooltip.getInstance(this);
                     if (tooltipInstance) {
                         tooltipInstance.hide();
@@ -638,7 +681,7 @@ $usernameDisplay = !empty($user['fname']) ? htmlspecialchars($user['fname']) : h
     </script>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             document.querySelectorAll("[data-tooltip]").forEach(element => {
                 const originalTooltip = element.getAttribute("data-tooltip"); // Store original text
 
@@ -648,7 +691,7 @@ $usernameDisplay = !empty($user['fname']) ? htmlspecialchars($user['fname']) : h
                 }
 
                 // ✅ Hide tooltip on click
-                element.addEventListener("click", function() {
+                element.addEventListener("click", function () {
                     this.removeAttribute("data-tooltip"); // Remove only for clicked element
 
                     // Restore tooltip after 500ms
@@ -668,12 +711,12 @@ $usernameDisplay = !empty($user['fname']) ? htmlspecialchars($user['fname']) : h
     </script>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             let searchInput = document.getElementById("searchInput");
             let table = document.getElementById("announcementTable");
             let tbody = table.getElementsByTagName("tbody")[0];
 
-            searchInput.addEventListener("keyup", function() {
+            searchInput.addEventListener("keyup", function () {
                 let filter = searchInput.value.toLowerCase();
                 let rows = tbody.getElementsByTagName("tr");
 
@@ -696,14 +739,14 @@ $usernameDisplay = !empty($user['fname']) ? htmlspecialchars($user['fname']) : h
 
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             let table = document.getElementById("announcementTable");
             let headers = table.querySelectorAll("thead th");
             let tbody = table.querySelector("tbody");
             let sortOrder = {};
 
             headers.forEach((header, columnIndex) => {
-                header.addEventListener("click", function() {
+                header.addEventListener("click", function () {
                     let rows = Array.from(tbody.rows);
                     sortOrder[columnIndex] = !sortOrder[columnIndex];
 

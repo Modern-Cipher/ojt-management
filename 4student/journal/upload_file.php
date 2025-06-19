@@ -17,7 +17,7 @@ if (!$filename_id || !$file) {
     exit();
 }
 
-// 🔐 Fetch user full name
+// Fetch user full name
 $sql = "SELECT fname, lname FROM users WHERE users_id = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $user_id);
@@ -26,7 +26,7 @@ $stmt->bind_result($fname, $lname);
 $stmt->fetch();
 $stmt->close();
 
-// 🔐 Fetch filename from filename table
+// Fetch filename from filename table
 $sql = "SELECT filename FROM filename WHERE filename_id = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $filename_id);
@@ -40,7 +40,7 @@ if (!$filename) {
     exit();
 }
 
-// 📂 Check if existing upload → Delete old if exists
+// Check if existing upload → Delete old if exists
 $sql = "SELECT file_name, filepath FROM uploads WHERE filename_id = ? AND uploadedby_id = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("ii", $filename_id, $user_id);
@@ -51,7 +51,6 @@ $stmt->close();
 
 if ($oldFileName && file_exists("../../upload_journal/" . $oldFileName)) {
     unlink("../../upload_journal/" . $oldFileName); // Delete file
-    // Delete record
     $sql = "DELETE FROM uploads WHERE filename_id = ? AND uploadedby_id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ii", $filename_id, $user_id);
@@ -59,19 +58,20 @@ if ($oldFileName && file_exists("../../upload_journal/" . $oldFileName)) {
     $stmt->close();
 }
 
-// 📄 Rename file
+// Rename file
 $ext = pathinfo($file['name'], PATHINFO_EXTENSION);
 $random = substr(str_shuffle('abcdefghijklmnopqrstuvwxyz0123456789'), 0, 6);
 $newFileName = "{$fname}_{$lname}_{$filename}_{$random}.{$ext}";
+$originalFileName = $file['name']; // Store original file name
 $destination = "../../upload_journal/" . $newFileName;
 
-// 📥 Move file
+// Move file
 if (move_uploaded_file($file['tmp_name'], $destination)) {
     // Insert to DB
-    $sql = "INSERT INTO uploads (filename_id, file_name, filepath, uploadedby_id, upload_status, submitted_on, updated_on) 
-            VALUES (?, ?, ?, ?, 'processing', NOW(), NOW())";
+    $sql = "INSERT INTO uploads (filename_id, file_name, filepath, uploadedby_id, upload_status, submitted_on, updated_on, original_file_name) 
+            VALUES (?, ?, ?, ?, 'processing', NOW(), NOW(), ?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("issi", $filename_id, $newFileName, $destination, $user_id);
+    $stmt->bind_param("issis", $filename_id, $newFileName, $destination, $user_id, $originalFileName);
     $stmt->execute();
     $stmt->close();
 

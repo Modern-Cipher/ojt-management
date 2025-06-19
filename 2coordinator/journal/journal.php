@@ -54,6 +54,7 @@ $usernameDisplay = !empty($user['fname']) ? htmlspecialchars($user['fname']) : h
     <link rel="stylesheet" href="../../2coordinator/journal/css/timeline.css">
     <link rel="stylesheet" href="../../2coordinator/journal/css/comment.css">
     <link rel="stylesheet" href="../../2coordinator/journal/css/tooltip.css">
+    <link rel="stylesheet" href="../../2coordinator/journal/css/journal_modal.css">
 
 </head>
 
@@ -88,7 +89,8 @@ $usernameDisplay = !empty($user['fname']) ? htmlspecialchars($user['fname']) : h
         </div>
     </nav>
     <!-- Notification Modal -->
-    <div class="modal fade" id="notificationModal" tabindex="-1" aria-labelledby="notificationModalLabel" aria-hidden="true">
+    <div class="modal fade" id="notificationModal" tabindex="-1" aria-labelledby="notificationModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-dialog-end">
             <div class="modal-content notification-modal">
                 <div class="modal-header">
@@ -129,8 +131,11 @@ $usernameDisplay = !empty($user['fname']) ? htmlspecialchars($user['fname']) : h
         <ul class="sidebar-menu">
             <li>
                 <a href="../../2coordinator/coordinatordashboard.php" tooltip-side="Dashboard">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="34" height="34">
-                        <path d="M9 3a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-6a2 2 0 0 1 2 -2zm0 12a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-2a2 2 0 0 1 2 -2zm10 -4a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-6a2 2 0 0 1 2 -2zm0 -8a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-2a2 2 0 0 1 2 -2z"></path>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="34"
+                        height="34">
+                        <path
+                            d="M9 3a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-6a2 2 0 0 1 2 -2zm0 12a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-2a2 2 0 0 1 2 -2zm10 -4a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-6a2 2 0 0 1 2 -2zm0 -8a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-2a2 2 0 0 1 2 -2z">
+                        </path>
                     </svg>
                 </a>
             </li>
@@ -138,7 +143,8 @@ $usernameDisplay = !empty($user['fname']) ? htmlspecialchars($user['fname']) : h
                 <!-- Main Item with Toggle -->
                 <li tooltip-side="Host Training Establishment">
                     <a href="#" class="menu-toggle" data-bs-toggle="collapse" data-bs-target="#submenu1">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="34" height="34" stroke-width="2">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-linecap="round" stroke-linejoin="round" width="34" height="34" stroke-width="2">
                             <path d="M4 21v-15c0 -1 1 -2 2 -2h5c1 0 2 1 2 2v15"></path>
                             <path d="M16 8h2c1 0 2 1 2 2v11"></path>
                             <path d="M3 21h18"></path>
@@ -159,14 +165,18 @@ $usernameDisplay = !empty($user['fname']) ? htmlspecialchars($user['fname']) : h
                 <ul id="submenu1" class="collapse sub-menu">
                     <li>
                         <a href="../../2coordinator/establishment/establishment.php" tooltip-side="Host Establishments">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="26" height="26" stroke-width="2">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="26"
+                                height="26" stroke-width="2">
                                 <path d="M3 21h9"></path>
                                 <path d="M9 8h1"></path>
                                 <path d="M9 12h1"></path>
                                 <path d="M9 16h1"></path>
                                 <path d="M14 8h1"></path>
                                 <path d="M14 12h1"></path>
-                                <path d="M5 21v-16c0 -.53 .211 -1.039 .586 -1.414c.375 -.375 .884 -.586 1.414 -.586h10c.53 0 1.039 .211 1.414 .586c.375 .375 .586 .884 .586 1.414v7"></path>
+                                <path
+                                    d="M5 21v-16c0 -.53 .211 -1.039 .586 -1.414c.375 -.375 .884 -.586 1.414 -.586h10c.53 0 1.039 .211 1.414 .586c.375 .375 .586 .884 .586 1.414v7">
+                                </path>
                                 <path d="M16 19h6"></path>
                                 <path d="M19 16v6"></path>
                             </svg>
@@ -174,8 +184,12 @@ $usernameDisplay = !empty($user['fname']) ? htmlspecialchars($user['fname']) : h
                     </li>
                     <li>
                         <a href="../../2coordinator/trainer/trainer.php" tooltip-side="Host Trainers">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="26" height="26" stroke-width="2">
-                                <path d="M19.03 17.818a3 3 0 0 0 1.97 -2.818v-8a3 3 0 0 0 -3 -3h-12a3 3 0 0 0 -3 3v8c0 1.317 .85 2.436 2.03 2.84"></path>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="26"
+                                height="26" stroke-width="2">
+                                <path
+                                    d="M19.03 17.818a3 3 0 0 0 1.97 -2.818v-8a3 3 0 0 0 -3 -3h-12a3 3 0 0 0 -3 3v8c0 1.317 .85 2.436 2.03 2.84">
+                                </path>
                                 <path d="M10 14a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
                                 <path d="M8 21a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2"></path>
                             </svg>
@@ -183,8 +197,12 @@ $usernameDisplay = !empty($user['fname']) ? htmlspecialchars($user['fname']) : h
                     </li>
                     <li>
                         <a href="../../2coordinator/host_record/host_record.php" tooltip-side="Host Documents">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="26" height="26" stroke-width="2">
-                                <path d="M3 7m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"></path>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="26"
+                                height="26" stroke-width="2">
+                                <path
+                                    d="M3 7m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z">
+                                </path>
                                 <path d="M8 7v-2a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v2"></path>
                                 <path d="M12 12l0 .01"></path>
                                 <path d="M3 13a20 20 0 0 0 18 0"></path>
@@ -197,7 +215,8 @@ $usernameDisplay = !empty($user['fname']) ? htmlspecialchars($user['fname']) : h
                 <!-- Main Item with Toggle -->
                 <li tooltip-side="Student Interns">
                     <a href="#" class="menu-toggle" data-bs-toggle="collapse" data-bs-target="#submenu2">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="34" height="34" stroke-width="2">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-linecap="round" stroke-linejoin="round" width="34" height="34" stroke-width="2">
                             <path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path>
                             <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
                             <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
@@ -211,17 +230,23 @@ $usernameDisplay = !empty($user['fname']) ? htmlspecialchars($user['fname']) : h
                 <ul id="submenu2" class="collapse sub-menu">
                     <li>
                         <a href="../../2coordinator/list_request/list_request.php" tooltip-side="List">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="26" height="26" stroke-width="2">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="26"
+                                height="26" stroke-width="2">
                                 <path d="M9 10a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"></path>
                                 <path d="M6 21v-1a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v1"></path>
-                                <path d="M3 5a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-14z"></path>
+                                <path
+                                    d="M3 5a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-14z">
+                                </path>
                             </svg>
                         </a>
                     </li>
 
                     <li>
                         <a href="../../2coordinator/intern_deploy/intern_deploy.php" tooltip-side="Deployment">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="26" height="26" stroke-width="2">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="26"
+                                height="26" stroke-width="2">
                                 <path d="M10 13a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
                                 <path d="M8 21v-1a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v1"></path>
                                 <path d="M15 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
@@ -237,8 +262,11 @@ $usernameDisplay = !empty($user['fname']) ? htmlspecialchars($user['fname']) : h
                 <!-- Main Item with Toggle -->
                 <li tooltip-side="Internship Requirements">
                     <a href="#" class="menu-toggle" data-bs-toggle="collapse" data-bs-target="#submenu3">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="34" height="34" stroke-width="2">
-                            <path d="M5 19l2.757 -7.351a1 1 0 0 1 .936 -.649h12.307a1 1 0 0 1 .986 1.164l-.996 5.211a2 2 0 0 1 -1.964 1.625h-14.026a2 2 0 0 1 -2 -2v-11a2 2 0 0 1 2 -2h4l3 3h7a2 2 0 0 1 2 2v2"></path>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-linecap="round" stroke-linejoin="round" width="34" height="34" stroke-width="2">
+                            <path
+                                d="M5 19l2.757 -7.351a1 1 0 0 1 .936 -.649h12.307a1 1 0 0 1 .986 1.164l-.996 5.211a2 2 0 0 1 -1.964 1.625h-14.026a2 2 0 0 1 -2 -2v-11a2 2 0 0 1 2 -2h4l3 3h7a2 2 0 0 1 2 2v2">
+                            </path>
                         </svg>
                     </a>
                     </a>
@@ -248,7 +276,9 @@ $usernameDisplay = !empty($user['fname']) ? htmlspecialchars($user['fname']) : h
                 <ul id="submenu3" class="collapse sub-menu">
                     <li>
                         <a href="../../2coordinator/predeploy/predeploy.php" tooltip-side="Pre Deployment">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="26" height="26" stroke-width="2">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="26"
+                                height="26" stroke-width="2">
                                 <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
                                 <path d="M12 21h-5a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v4.5"></path>
                                 <path d="M16.5 17.5m-2.5 0a2.5 2.5 0 1 0 5 0a2.5 2.5 0 1 0 -5 0"></path>
@@ -260,7 +290,9 @@ $usernameDisplay = !empty($user['fname']) ? htmlspecialchars($user['fname']) : h
 
                     <li>
                         <a href="../../2coordinator/postdeploy/postdeploy.php" tooltip-side="Post Deployment">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="26" height="26" stroke-width="2">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="26"
+                                height="26" stroke-width="2">
                                 <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
                                 <path d="M5 8v-3a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2h-5"></path>
                                 <path d="M6 14m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
@@ -270,9 +302,14 @@ $usernameDisplay = !empty($user['fname']) ? htmlspecialchars($user['fname']) : h
                     </li>
 
                     <li>
-                        <a href="../../2coordinator/journal/journal.php" data-bs-toggle="tooltip" title="Student Journal">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="26" height="26" stroke-width="2">
-                                <path d="M6 4h11a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-11a1 1 0 0 1 -1 -1v-14a1 1 0 0 1 1 -1m3 0v18"></path>
+                        <a href="../../2coordinator/journal/journal.php" data-bs-toggle="tooltip"
+                            title="Student Journal">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="26"
+                                height="26" stroke-width="2">
+                                <path
+                                    d="M6 4h11a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-11a1 1 0 0 1 -1 -1v-14a1 1 0 0 1 1 -1m3 0v18">
+                                </path>
                                 <path d="M13 8l2 0"></path>
                                 <path d="M13 12l2 0"></path>
                             </svg>
@@ -292,9 +329,14 @@ $usernameDisplay = !empty($user['fname']) ? htmlspecialchars($user['fname']) : h
             </ul>
             <li>
                 <a href="../../2coordinator/chat/chat.php" tooltip-side="Chat Room">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" width="34" height="34" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor">
-                        <path d="M16.5 10c3.038 0 5.5 2.015 5.5 4.5c0 1.397 -.778 2.645 -2 3.47l0 2.03l-1.964 -1.178a6.649 6.649 0 0 1 -1.536 .178c-3.038 0 -5.5 -2.015 -5.5 -4.5s2.462 -4.5 5.5 -4.5z"></path>
-                        <path d="M11.197 15.698c-.69 .196 -1.43 .302 -2.197 .302a8.008 8.008 0 0 1 -2.612 -.432l-2.388 1.432v-2.801c-1.237 -1.082 -2 -2.564 -2 -4.199c0 -3.314 3.134 -6 7 -6c3.782 0 6.863 2.57 7 5.785l0 .233"></path>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" width="34" height="34"
+                        stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor">
+                        <path
+                            d="M16.5 10c3.038 0 5.5 2.015 5.5 4.5c0 1.397 -.778 2.645 -2 3.47l0 2.03l-1.964 -1.178a6.649 6.649 0 0 1 -1.536 .178c-3.038 0 -5.5 -2.015 -5.5 -4.5s2.462 -4.5 5.5 -4.5z">
+                        </path>
+                        <path
+                            d="M11.197 15.698c-.69 .196 -1.43 .302 -2.197 .302a8.008 8.008 0 0 1 -2.612 -.432l-2.388 1.432v-2.801c-1.237 -1.082 -2 -2.564 -2 -4.199c0 -3.314 3.134 -6 7 -6c3.782 0 6.863 2.57 7 5.785l0 .233">
+                        </path>
                         <path d="M10 8h.01"></path>
                         <path d="M7 8h.01"></path>
                         <path d="M15 14h.01"></path>
@@ -308,6 +350,15 @@ $usernameDisplay = !empty($user['fname']) ? htmlspecialchars($user['fname']) : h
 
 
     <div class="parent">
+        <!-- Button to open Journal Entry Modal -->
+        <div class="div2 d-flex justify-content-end pe-3 mt-3">
+            <button type="button" class="btn btn-sm btn-primary journal-add-btn" data-bs-toggle="modal"
+                data-bs-target="#journalModal">
+                Add Weekly Journal
+            </button>
+        </div>
+
+
         <div class="div3">
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <h5 class="m-0">Student Weekly Journal</h5>
@@ -333,22 +384,181 @@ $usernameDisplay = !empty($user['fname']) ? htmlspecialchars($user['fname']) : h
 
     </div>
 
+    </div>
 
 
+    <!-- Journal Entry Modal -->
+    <div class="modal fade" id="journalModal" tabindex="-1" aria-labelledby="journalModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="journalModalLabel">Add Journal Task</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="form-section">
+                            <form id="journalForm">
+                                <div class="mb-3">
+                                    <label for="taskName" class="form-label">Journal Task Name</label>
+                                    <input type="text" class="form-control" id="taskName" name="taskName" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="weekAssigned" class="form-label">Week Assigned</label>
+                                    <select class="form-select" id="weekAssigned" name="weekAssigned" required>
+                                        <?php for ($i = 1; $i <= 20; $i++): ?>
+                                            <option value="<?= $i ?>">Week <?= $i ?></option>
+                                        <?php endfor; ?>
+                                    </select>
+                                </div>
+                                <div class="text-end">
+                                    <button type="submit" class="btn btn-primary btn-sm">Assign Task</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="table-section">
+                            <div class="mb-2">
+                                <input type="text" id="journalSearchInput" class="form-control form-control-sm"
+                                    placeholder="Search journal task...">
+                            </div>
+                            <h6>Added Journal Entries</h6>
+                            <table class="table table-bordered table-sm align-middle">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Journal Task Name</th>
+                                        <th>Week Assigned</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="journalTableBody">
+                                    <!-- Dynamic content -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Journal Task Modal -->
+    <div class="modal fade" id="editJournalModal" tabindex="-1" aria-labelledby="editJournalModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-md modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editJournalModalLabel">Edit Journal Task</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editJournalForm">
+                        <input type="hidden" id="oldFilename">
+                        <div class="mb-3">
+                            <label for="newFilename" class="form-label">Journal Task Name</label>
+                            <input type="text" class="form-control" id="newFilename" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="newCount" class="form-label">Week No. (Count)</label>
+                            <select class="form-select" id="newCount" required>
+                                <option value="">Select Week</option>
+                                ${[...Array(15).keys()].map(i => `<option value="${i+1}">Week ${i+1}</option>
+                                `).join('')}
+                            </select>
+                        </div>
+                        <div class="text-end">
+                            <button type="submit" class="btn btn-primary btn-sm">Update</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1055">
+        <div id="successToast" class="toast align-items-center text-bg-success border-0" role="alert">
+            <div class="d-flex">
+                <div class="toast-body">
+                    ✅ Journal updated and week auto-adjusted.
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirm Delete Modal -->
+    <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title">Confirm Deletion</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete <strong id="deleteFilenameLabel"></strong>?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button id="confirmDeleteBtn" type="button" class="btn btn-danger">Yes, Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Toast -->
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1055">
+        <div id="deleteToast" class="toast align-items-center text-bg-danger border-0" role="alert">
+            <div class="d-flex">
+                <div class="toast-body">
+                    🗑️ Journal entry deleted successfully.
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+            </div>
+        </div>
     </div>
 
 
 
-    <!-- Bootstrap JS -->
+    <!-- ✅ Success Toast -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="successToast" class="toast bg-success text-white" role="alert" aria-live="assertive"
+            aria-atomic="true">
+            <div class="toast-body">Operation completed successfully.</div>
+        </div>
+
+        <div id="deleteToast" class="toast bg-danger text-white" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-body">Journal entry deleted successfully.</div>
+        </div>
+    </div>
+
+    <!-- ✅ Confirm Delete Modal -->
+    <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title">Confirm Delete</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete <strong id="deleteFilenameLabel"></strong>?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" id="confirmDeleteBtn" class="btn btn-danger btn-sm">Yes, Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../../2coordinator/journal/js/search_students.js"></script>
     <script src="../../2coordinator/journal/js/tooltip.js"></script>
     <script src="../../2coordinator/journal/js/toast.js"></script>
-    <script src="../../2coordinator/journal/js/dashboard_filename.js"></script> <!-- HULI palagi ito -->
-
-
-
-
+    <script src="../../2coordinator/journal/js/dashboard_filename.js"></script>
+    <script src="../../2coordinator/journal/js/load_journal_entries.js"></script>
 </body>
 
 </html>

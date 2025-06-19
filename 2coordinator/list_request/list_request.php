@@ -51,6 +51,8 @@ $usernameDisplay = !empty($user['fname']) ? htmlspecialchars($user['fname']) : h
     <link rel="stylesheet" href="../../2coordinator/list_request/css/list_request_table.css">
     <link rel="stylesheet" href="../../2coordinator/list_request/css/details.css">
 
+    <link rel="stylesheet" href="../../2coordinator/list_request/css/attendance_modal.css">
+
 </head>
 
 <body>
@@ -329,7 +331,9 @@ $usernameDisplay = !empty($user['fname']) ? htmlspecialchars($user['fname']) : h
                             <h5 class="announcement-title">Internship List</h5>
                             <div class="d-flex align-items-center">
                                 <input type="text" class="form-control search-input" id="searchInput" placeholder="Search...">
-
+                                <button class="btn btn-primary ms-2" id="attendanceButton" data-bs-toggle="tooltip" title="Attendance List">
+                                    Attendance
+                                </button>
                             </div>
 
 
@@ -416,6 +420,68 @@ $usernameDisplay = !empty($user['fname']) ? htmlspecialchars($user['fname']) : h
         </div>
     </div>
 
+    <!-- Attendance Modal -->
+    <div class="modal fade" id="attendanceModal" tabindex="-1" aria-labelledby="attendanceModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="attendanceModalLabel">Attendance List</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="attendance-header">
+                        <h5>Attendance List</h5>
+                        <div class="search-container">
+                            <input type="text" class="form-control search-input" id="attendanceSearchInput" placeholder="Search...">
+                            <button class="btn btn-secondary" id="printButton" data-bs-toggle="tooltip" title="Print Table">Print</button>
+                            <button class="btn btn-success" id="exportButton" data-bs-toggle="tooltip" title="Export to Excel">Export</button>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover" id="attendanceTable">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>No.</th>
+                                    <th>Image</th>
+                                    <th>School ID</th>
+                                    <th>Name</th>
+                                    <th>Course</th>
+                                    <th>Email</th>
+                                    <th>Registered On</th>
+                                    <th>Validated On</th>
+                                    <th>Remarks</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                    <div id="attendanceLoadingSpinner" style="display: none;">
+                        <div class="spinner-border text-primary" role="status"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card-Style Image Modal -->
+    <div class="modal fade" id="imageCardModal" tabindex="-1" aria-labelledby="imageCardModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content card-style">
+                <div class="modal-header border-0">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img id="cardImage" src="" alt="Student Selfie" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Existing content -->
+</body>
+    <!-- Existing content -->
+</body>
+
     <script>
         document.querySelector("#list_request_Table tbody").addEventListener("click", function(e) {
             if (e.target.closest("tr")) {
@@ -430,6 +496,8 @@ $usernameDisplay = !empty($user['fname']) ? htmlspecialchars($user['fname']) : h
     <script src="../../2coordinator/list_request/js/tooltip.js"></script>
     <script src="../../2coordinator/list_request/js/list_request.js"></script>
     <script src="../../2coordinator/list_request/js/search_sorting.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="../../2coordinator/list_request/js/attendance_modal.js"></script>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

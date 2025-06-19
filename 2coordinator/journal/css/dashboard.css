@@ -13,6 +13,10 @@ body {
   margin: 0 auto;
   padding: 5px 20px 5px 0px; /* Default for 1920px */
 }
+.div2 {
+  grid-column: 1 / -1; /* spans full width of the grid */
+  grid-row-start: 1; /* place it at the top or where needed */
+}
 
 .div3 {
   grid-column: span 4 / span 4;
@@ -55,10 +59,10 @@ body {
 }
 
 @media (max-width: 1080px) and (min-width: 770px) {
-    .parent {
-      padding: 20px 40px 20px 80px;
-    }
+  .parent {
+    padding: 20px 40px 20px 80px;
   }
+}
 
 /* Mobile & Tablet */
 @media (max-width: 768px) {
@@ -78,31 +82,35 @@ body {
   }
 }
 
+.scrollable-cards {
+  max-height: 80vh; /* adjust if needed */
+  overflow-y: auto;
+  padding-right: 5px; /* avoid scrollbar overlap */
+}
+
+/* Hide scrollbar but allow scroll */
+.scrollable-cards::-webkit-scrollbar {
+  width: 0px;
+}
 
 .scrollable-cards {
-    max-height: 80vh; /* adjust if needed */
-    overflow-y: auto;
-    padding-right: 5px; /* avoid scrollbar overlap */
-  }
-  
-  /* Hide scrollbar but allow scroll */
-  .scrollable-cards::-webkit-scrollbar {
-    width: 0px;
-  }
-  
-  .scrollable-cards {
-    -ms-overflow-style: none; /* IE/Edge */
-    scrollbar-width: none; /* Firefox */
-  }
-  
-  .scrollable-cards::-webkit-scrollbar {
-    display: none; /* Chrome, Safari */
-  }
-  
+  -ms-overflow-style: none; /* IE/Edge */
+  scrollbar-width: none; /* Firefox */
+}
 
-  .custom-card.active {
-    border: 2px solid #41a841; /* Bootstrap success color */
-    background-color: #e6f4ea;
-  }
-  
-  
+.scrollable-cards::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+.custom-card.active {
+  border: 2px solid #41a841; /* Bootstrap success color */
+  background-color: #e6f4ea;
+}
+
+.journal-add-btn {
+  font-size: 0.875rem;
+  padding: 6px 14px;
+  border-radius: 5px;
+  line-height: 1.2;
+  white-space: nowrap;
+}

@@ -1,0 +1,101 @@
+// Hint: Siguraduhin na ang PHP variables na $data['qr_code_data'] at $attendance_id
+// ay maayos na na-echo sa loob ng <script> tags sa iyong PHP file.
+// Halimbawa:
+// <script>
+//     const qrCodeData = <?php echo json_encode($data['qr_code_data']); ?>;
+//     const attendanceId = <?php echo json_encode($attendance_id); ?>;
+// </script>
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Kukunin ang mga PHP variable na na-inject sa JavaScript context.
+    // Ginawang 'attendanceId' para mas malinaw ang pangalan.
+    const qrCodeData = typeof window.qrCodeData !== 'undefined' ? window.qrCodeData : null;
+    const attendanceId = typeof window.attendanceId !== 'undefined' ? window.attendanceId : null;
+
+    const qrCodeContainer = document.getElementById('qrCode');
+    const downloadLink = document.getElementById('downloadQr');
+
+    // Basic validation kung nakuha ang PHP data at DOM elements.
+    if (!qrCodeData) {
+        console.error('Error: QR code data is not available.');
+        // Maaari kang magpakita ng user-friendly na mensahe dito gamit ang Swal.fire
+        Swal.fire({
+            icon: 'error',
+            title: 'Data Error',
+            text: 'Hindi makuha ang kinakailangang QR code data.'
+        });
+        return;
+    }
+
+    if (!qrCodeContainer) {
+        console.error('Error: QR code container element with ID "qrCode" not found.');
+        Swal.fire({
+            icon: 'error',
+            title: 'UI Error',
+            text: 'Hindi makita ang lalagyan para sa QR code. Mangyaring i-refresh ang pahina.'
+        });
+        return;
+    }
+
+    if (!downloadLink) {
+        console.error('Error: Download link element with ID "downloadQr" not found.');
+        Swal.fire({
+            icon: 'error',
+            title: 'UI Error',
+            text: 'Hindi makita ang download link. Mangyaring i-refresh ang pahina.'
+        });
+        return;
+    }
+
+    // Konstruktahin ang URL para sa QR code generation API.
+    // Mahalaga na i-encode ang qrCodeData para maiwasan ang isyu sa mga special characters.
+    const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(qrCodeData)}&margin=2&ecl=L`;
+
+    // I-fetch ang QR code image mula sa API.
+    fetch(qrApiUrl)
+        .then(response => {
+            // Suriin kung matagumpay ang network request.
+            if (!response.ok) {
+                // Mag-throw ng error kung ang HTTP status ay hindi 2xx (Successful).
+                throw new Error(`HTTP error! Status: ${response.status} - Failed to fetch QR code.`);
+            }
+            // Ibalik ang response body bilang Blob (binary data, angkop para sa mga imahe).
+            return response.blob();
+        })
+        .then(imageBlob => {
+            // Gumawa ng URL mula sa Blob object.
+            const imageUrl = URL.createObjectURL(imageBlob);
+
+            // Gumawa ng bagong image element.
+            const imgElement = document.createElement('img');
+            imgElement.src = imageUrl; // Itakda ang source ng imahe.
+            imgElement.className = 'img-fluid'; // Idagdag ang responsive image class (para sa Bootstrap).
+            imgElement.style.maxWidth = '200px'; // Limitahan ang maximum width para sa display.
+            imgElement.alt = 'Generated QR Code'; // Idagdag ang alt text para sa accessibility.
+
+            // I-clear muna ang container bago idagdag ang bagong imahe.
+            qrCodeContainer.innerHTML = '';
+            // Idagdag ang imahe sa QR code container.
+            qrCodeContainer.appendChild(imgElement);
+
+            // I-setup ang download link.
+            downloadLink.href = imageUrl; // Itakda ang download URL.
+            // Bumuo ng makabuluhang filename para sa download.
+            // Siguraduhin na ang attendanceId ay valid para sa filename.
+            downloadLink.download = `qr_code_${attendanceId || 'unknown'}.png`;
+            downloadLink.style.display = 'inline-block'; // Gawing visible ang download link.
+
+            // Opsyonal: I-revoke ang object URL pagkatapos ng ilang oras para mag-release ng memory.
+            // setTimeout(() => URL.revokeObjectURL(imageUrl), 60000);
+        })
+        .catch(error => {
+            // Hanapin ang anumang error sa panahon ng fetch operation o sa mga .then() blocks.
+            console.error('QR Code Generation Error:', error);
+            // Magpakita ng user-friendly na mensahe ng error gamit ang SweetAlert2 (Swal).
+            Swal.fire({
+                icon: 'error',
+                title: 'Nabigo ang Pag-generate ng QR Code',
+                text: 'Nagkaroon ng problema sa pag-generate ng QR code. Mangyaring subukang muli. Mensahe: ' + error.message
+            });
+        });
+});

@@ -86,7 +86,8 @@ $usernameDisplay = !empty($user['fname']) ? htmlspecialchars($user['fname']) : h
         </div>
     </nav>
     <!-- Notification Modal -->
-    <div class="modal fade" id="notificationModal" tabindex="-1" aria-labelledby="notificationModalLabel" aria-hidden="true">
+    <div class="modal fade" id="notificationModal" tabindex="-1" aria-labelledby="notificationModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-dialog-end">
             <div class="modal-content notification-modal">
                 <div class="modal-header">
@@ -127,8 +128,11 @@ $usernameDisplay = !empty($user['fname']) ? htmlspecialchars($user['fname']) : h
         <ul class="sidebar-menu">
             <li>
                 <a href="../../1admin/admindashboard.php" data-bs-toggle="tooltip" title="Dashboard">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="34" height="34">
-                        <path d="M9 3a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-6a2 2 0 0 1 2 -2zm0 12a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-2a2 2 0 0 1 2 -2zm10 -4a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-6a2 2 0 0 1 2 -2zm0 -8a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-2a2 2 0 0 1 2 -2z"></path>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="34"
+                        height="34">
+                        <path
+                            d="M9 3a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-6a2 2 0 0 1 2 -2zm0 12a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-2a2 2 0 0 1 2 -2zm10 -4a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-6a2 2 0 0 1 2 -2zm0 -8a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-4a2 2 0 0 1 -2 -2v-2a2 2 0 0 1 2 -2z">
+                        </path>
                     </svg>
                 </a>
             </li>
@@ -136,11 +140,13 @@ $usernameDisplay = !empty($user['fname']) ? htmlspecialchars($user['fname']) : h
                 <!-- Main Item with Toggle -->
                 <li data-bs-toggle="tooltip" title="Internship Reports">
                     <a href="#" class="menu-toggle" data-bs-toggle="collapse" data-bs-target="#submenu1">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="34" height="34" stroke-width="2">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-linecap="round" stroke-linejoin="round" width="34" height="34" stroke-width="2">
                             <path d="M8 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h5.697"></path>
                             <path d="M18 14v4h4"></path>
                             <path d="M18 11v-4a2 2 0 0 0 -2 -2h-2"></path>
-                            <path d="M8 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"></path>
+                            <path d="M8 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z">
+                            </path>
                             <path d="M18 18m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path>
                             <path d="M8 11h4"></path>
                             <path d="M8 15h3"></path>
@@ -152,8 +158,11 @@ $usernameDisplay = !empty($user['fname']) ? htmlspecialchars($user['fname']) : h
                 <!-- Sub-items (Initially Collapsed) -->
                 <ul id="submenu1" class="collapse sub-menu">
                     <li>
-                        <a href="../../1admin/internassigned/internassigned.php" data-bs-toggle="tooltip" title="List of Assigned Student">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="26" height="26" stroke-width="2">
+                        <a href="../../1admin/internassigned/internassigned.php" data-bs-toggle="tooltip"
+                            title="List of Assigned Student">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="26"
+                                height="26" stroke-width="2">
                                 <path d="M10 13a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
                                 <path d="M8 21v-1a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v1"></path>
                                 <path d="M15 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
@@ -164,8 +173,11 @@ $usernameDisplay = !empty($user['fname']) ? htmlspecialchars($user['fname']) : h
                         </a>
                     </li>
                     <li>
-                        <a href="../../1admin/establishment/establishment.php" data-bs-toggle="tooltip" title="Host Training Establishment">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="26" height="26" stroke-width="2">
+                        <a href="../../1admin/establishment/establishment.php" data-bs-toggle="tooltip"
+                            title="Host Training Establishment">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="26"
+                                height="26" stroke-width="2">
                                 <path d="M3 21l18 0"></path>
                                 <path d="M9 8l1 0"></path>
                                 <path d="M9 12l1 0"></path>
@@ -183,8 +195,11 @@ $usernameDisplay = !empty($user['fname']) ? htmlspecialchars($user['fname']) : h
                 <!-- Main Item with Toggle -->
                 <li data-bs-toggle="tooltip" title="System Management">
                     <a href="#" class="menu-toggle" data-bs-toggle="collapse" data-bs-target="#submenu2">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="34" height="34" stroke-width="2">
-                            <path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z"></path>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-linecap="round" stroke-linejoin="round" width="34" height="34" stroke-width="2">
+                            <path
+                                d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z">
+                            </path>
                             <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"></path>
                         </svg>
                     </a>
@@ -194,8 +209,11 @@ $usernameDisplay = !empty($user['fname']) ? htmlspecialchars($user['fname']) : h
                 <!-- Sub-items (Initially Collapsed) -->
                 <ul id="submenu2" class="collapse sub-menu">
                     <li>
-                        <a href="../../1admin/user_account/user_account.php" data-bs-toggle="tooltip" title="Manage Accounts">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="26" height="26" stroke-width="2">
+                        <a href="../../1admin/user_account/user_account.php" data-bs-toggle="tooltip"
+                            title="Manage Accounts">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="26"
+                                height="26" stroke-width="2">
                                 <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
                                 <path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
                                 <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855"></path>
@@ -207,9 +225,14 @@ $usernameDisplay = !empty($user['fname']) ? htmlspecialchars($user['fname']) : h
 
             <li>
                 <a href="../../1admin/chat/chat.php" data-bs-toggle="tooltip" title="Chat Room">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" width="34" height="34" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor">
-                        <path d="M16.5 10c3.038 0 5.5 2.015 5.5 4.5c0 1.397 -.778 2.645 -2 3.47l0 2.03l-1.964 -1.178a6.649 6.649 0 0 1 -1.536 .178c-3.038 0 -5.5 -2.015 -5.5 -4.5s2.462 -4.5 5.5 -4.5z"></path>
-                        <path d="M11.197 15.698c-.69 .196 -1.43 .302 -2.197 .302a8.008 8.008 0 0 1 -2.612 -.432l-2.388 1.432v-2.801c-1.237 -1.082 -2 -2.564 -2 -4.199c0 -3.314 3.134 -6 7 -6c3.782 0 6.863 2.57 7 5.785l0 .233"></path>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" width="34" height="34"
+                        stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor">
+                        <path
+                            d="M16.5 10c3.038 0 5.5 2.015 5.5 4.5c0 1.397 -.778 2.645 -2 3.47l0 2.03l-1.964 -1.178a6.649 6.649 0 0 1 -1.536 .178c-3.038 0 -5.5 -2.015 -5.5 -4.5s2.462 -4.5 5.5 -4.5z">
+                        </path>
+                        <path
+                            d="M11.197 15.698c-.69 .196 -1.43 .302 -2.197 .302a8.008 8.008 0 0 1 -2.612 -.432l-2.388 1.432v-2.801c-1.237 -1.082 -2 -2.564 -2 -4.199c0 -3.314 3.134 -6 7 -6c3.782 0 6.863 2.57 7 5.785l0 .233">
+                        </path>
                         <path d="M10 8h.01"></path>
                         <path d="M7 8h.01"></path>
                         <path d="M15 14h.01"></path>
@@ -253,7 +276,8 @@ $usernameDisplay = !empty($user['fname']) ? htmlspecialchars($user['fname']) : h
                             <input type="file" hidden>
                         </label>
                         <input type="text" class="form-control" placeholder="Type your message...">
-                        <button type="submit" class="btn btn-primary btn-sm"><i class="fa-solid fa-paper-plane"></i></button>
+                        <button type="submit" class="btn btn-primary btn-sm"><i
+                                class="fa-solid fa-paper-plane"></i></button>
                     </form>
                 </div>
             </div>
@@ -266,6 +290,21 @@ $usernameDisplay = !empty($user['fname']) ? htmlspecialchars($user['fname']) : h
     </div>
 
 
+    <!-- Image Preview Modal -->
+    <div class="modal fade" id="imagePreviewModal" tabindex="-1" aria-labelledby="imagePreviewModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="imagePreviewModalLabel">Image Preview</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img id="previewImage" src="" alt="Image Preview" class="img-fluid" style="max-height: 70vh;">
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
