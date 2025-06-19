@@ -13,7 +13,7 @@ if (!defined('IS_PRODUCTION_ENVIRONMENT')) {
 }
 
 // --- ADD THIS LINE HERE ---
-date_default_timezone_set('Asia/Manila'); 
+// date_default_timezone_set('Asia/Manila'); 
 // --- END ADDITION ---
 
 // Initialize variables for database credentials
