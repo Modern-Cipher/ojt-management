@@ -1,5 +1,5 @@
 <?php
-date_default_timezone_set('Asia/Manila');
+// date_default_timezone_set('Asia/Manila'); 
 // Include database connection
 include_once '0config/database.php';
 
@@ -15,3 +15,5 @@ if ($conn->connect_error) {
 header("Location: login/login.php");
 // header("Location: registration/regs.php");
 exit;
+
+?>
