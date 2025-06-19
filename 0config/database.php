@@ -5,7 +5,7 @@
 // =============================================================
 
 if (!defined('IS_PRODUCTION_ENVIRONMENT')) {
-    define('IS_PRODUCTION_ENVIRONMENT', true); // CHANGE TO 'true' BEFORE HOSTINGER DEPLOYMENT!
+    define('IS_PRODUCTION_ENVIRONMENT', false); // CHANGE TO 'true' BEFORE HOSTINGER DEPLOYMENT!
 }
 
 // Set PHP's default timezone (always active for PHP functions)
