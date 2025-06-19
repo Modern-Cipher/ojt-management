@@ -9,7 +9,7 @@
 if (!defined('IS_PRODUCTION_ENVIRONMENT')) {
     // Set to 'true' if running on the live Hostinger server (production)
     // Set to 'false' if running on your local development server
-    define('IS_PRODUCTION_ENVIRONMENT', false); // <-- Default for local testing. CHANGE TO 'true' BEFORE HOSTINGER DEPLOYMENT!
+    define('IS_PRODUCTION_ENVIRONMENT', true); // <-- Default for local testing. CHANGE TO 'true' BEFORE HOSTINGER DEPLOYMENT!
 }
 
 // Initialize variables for database credentials
