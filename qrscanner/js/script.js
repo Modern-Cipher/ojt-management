@@ -124,26 +124,30 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    function displayData(data) {
-        dataDisplay.innerHTML = `
-            <div class="card-body">
-                <img src="${data.selfie_image_path}" alt="Selfie" class="selfie-img" data-bs-toggle="modal" data-bs-target="#imageZoomModal" data-image="${data.selfie_image_path}">
-                <div class="info mt-2">
-                    <p><strong>School ID:</strong> ${data.school_id}</p>
-                    <p><strong>Name:</strong> ${data.first_name} ${data.middle_name ? data.middle_name + ' ' : ''}${data.last_name}</p>
-                    <p><strong>Sex:</strong> ${data.sex}</p>
-                    <p><strong>Email:</strong> ${data.email}</p>
-                    <p><strong>Institute:</strong> ${data.institute}</p>
-                    <p><strong>Course:</strong> ${data.course}</p>
-                    <p><strong>Validated on:</strong> ${new Date().toLocaleString()}</p>
-                </div>
+// ... Other parts of script.js remain unchanged ...
+
+function displayData(data) {
+    dataDisplay.innerHTML = `
+        <div class="card-body">
+            <img src="${data.selfie_image_path}" alt="Selfie" class="selfie-img" data-bs-toggle="modal" data-bs-target="#imageZoomModal" data-image="${data.selfie_image_path}">
+            <div class="info mt-2">
+                <p><strong>School ID:</strong> ${data.school_id}</p>
+                <p><strong>Name:</strong> ${data.first_name} ${data.middle_name ? data.middle_name + ' ' : ''}${data.last_name}</p>
+                <p><strong>Sex:</strong> ${data.sex}</p>
+                <p><strong>Email:</strong> ${data.email}</p>
+                <p><strong>Institute:</strong> ${data.institute}</p>
+                <p><strong>Course:</strong> ${data.course}</p>
+                <p><strong>Validated on:</strong> ${data.scanned_timestamp ? new Date(data.scanned_timestamp).toLocaleString() : 'Not yet scanned'}</p>
             </div>
-        `;
-        document.querySelector('.selfie-img').addEventListener('click', () => {
-            zoomedImage.src = data.selfie_image_path;
-            imageZoomModal.show();
-        });
-    }
+        </div>
+    `;
+    document.querySelector('.selfie-img').addEventListener('click', () => {
+        zoomedImage.src = data.selfie_image_path;
+        imageZoomModal.show();
+    });
+}
+
+// ... Rest of script.js remains unchanged ...
 
     function displayBadges(messages) {
         badgeContainer.innerHTML = '';

@@ -26,7 +26,7 @@ if (empty($qr_code_data)) {
 }
 
 try {
-    // Check if QR code exists and its scan status
+    // Fetch attendance record and scan status
     $stmt = $conn->prepare("
         SELECT school_id, first_name, middle_name, last_name, sex, email, institute, course,
                selfie_image_path, ip_address, is_qr_scanned, scanned_timestamp
@@ -53,19 +53,25 @@ try {
     $image_base_path = rtrim(ROOT_DIR, '/') . '/' . IMAGE_UPLOAD_DIR;
     $image_filename = $selfie_path ? basename($selfie_path) : null;
     $absolute_path = $image_filename ? realpath($image_base_path . $image_filename) : null;
-    $relative_web_path = $image_filename ? '../' . IMAGE_UPLOAD_DIR . $image_filename : '../resources/placeholder.png';
+    $relative_web_path = $image_filename ? '../' . IMAGE_UPLOAD_DIR . $image_filename : '../resources/siplogo.png';
 
     if ($selfie_path && $image_filename && $absolute_path && file_exists($absolute_path)) {
         $data['selfie_image_path'] = $relative_web_path;
     } else {
-        $data['selfie_image_path'] = '../resources/placeholder.png';
-        error_log('Selfie image not found. Details: ' .
-                  'QR Code: ' . $qr_code_data . ', ' .
+        $data['selfie_image_path'] = '../resources/siplogo.png';
+        error_log('Selfie image not found for QR: ' . $qr_code_data . '. Details: ' .
                   'Database selfie_path: ' . ($selfie_path ?: 'NULL') . ', ' .
                   'Filename: ' . ($image_filename ?: 'N/A') . ', ' .
                   'Attempted path: ' . ($image_filename ? $image_base_path . $image_filename : 'N/A') . ', ' .
                   'Absolute path: ' . ($absolute_path ?: 'N/A') . ', ' .
-                  'File exists: ' . ($absolute_path ? (file_exists($absolute_path) ? 'Yes' : 'No') : 'N/A'));
+                  'File exists: ' . ($absolute_path ? (file_exists($absolute_path) ? 'Yes' : 'No') : 'N/A') . ', ' .
+                  'Placeholder used: ../resources/siplogo.png');
+    }
+
+    // Verify placeholder exists
+    $placeholder_path = realpath(ROOT_DIR . '/resources/siplogo.png');
+    if (!$placeholder_path || !file_exists($placeholder_path)) {
+        error_log('Placeholder image not found at: ' . (ROOT_DIR . '/resources/siplogo.png'));
     }
 
     // Check IP address and scan status
@@ -75,7 +81,7 @@ try {
 
     $messages = [];
     if (!$already_scanned) {
-        // Record attendance for first scan
+        // First scan: update attendance record
         $scanned_timestamp = date('Y-m-d H:i:s');
         $scanned_device_info = $_SERVER['HTTP_USER_AGENT'];
         $is_qr_scanned = 1;
@@ -83,7 +89,7 @@ try {
         $stmt = $conn->prepare("
             UPDATE attendance
             SET is_qr_scanned = ?, scanned_timestamp = ?, scanned_by_ip_address = ?, scanned_by_device_info = ?
-            WHERE qr_code_data = ?
+            WHERE qr_code_data = ? AND is_qr_scanned = 0
         ");
         if (!$stmt) {
             throw new Exception('Prepare failed: ' . $conn->error);
@@ -92,10 +98,17 @@ try {
         if (!$stmt->execute()) {
             throw new Exception('Execute failed: ' . $stmt->error);
         }
+        $affected_rows = $stmt->affected_rows;
         $stmt->close();
 
-        $messages = ['QR Validated', 'Attendance Recorded'];
+        if ($affected_rows > 0) {
+            $messages = ['QR Validated', 'Attendance Recorded'];
+            $data['scanned_timestamp'] = $scanned_timestamp; // Update data for response
+        } else {
+            $messages = ['Already Scanned']; // Race condition or DB inconsistency
+        }
     } else {
+        // Re-scan: display warnings, no DB update
         $messages = ['Already Scanned'];
         if ($ip_match) {
             $messages[] = 'Similar Device';
