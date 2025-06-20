@@ -5,10 +5,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const badgeContainer = document.getElementById('badgeContainer');
     const resetDisplay = document.getElementById('resetDisplay');
     const cameraSelect = document.getElementById('cameraSelect');
+    const countdown = document.getElementById('countdown');
+    const countdownTimer = document.getElementById('countdownTimer');
     const imageZoomModal = new bootstrap.Modal(document.getElementById('imageZoomModal'));
     const zoomedImage = document.getElementById('zoomedImage');
     let stream = null;
     let devices = [];
+    let isScanning = true;
+    let lastScannedQR = null;
 
     async function enumerateCameras() {
         try {
@@ -20,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 cameraSelect.innerHTML += `<option value="${device.deviceId}">${label}</option>`;
             });
             if (devices.length > 0) {
-                cameraSelect.value = devices[0].deviceId; // Default to first camera
+                cameraSelect.value = devices[0].deviceId;
                 startScanner(devices[0].deviceId);
             } else {
                 displayError('No cameras found');
@@ -59,8 +63,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    function startCountdown() {
+        let seconds = 5;
+        isScanning = false;
+        countdown.style.display = 'block';
+        countdownTimer.textContent = seconds;
+
+        const timer = setInterval(() => {
+            seconds--;
+            countdownTimer.textContent = seconds;
+            if (seconds <= 0) {
+                clearInterval(timer);
+                countdown.style.display = 'none';
+                isScanning = true;
+                lastScannedQR = null; // Allow new scans after countdown
+            }
+        }, 1000);
+    }
+
     function scanQRCode() {
-        if (!video.videoWidth || !video.videoHeight) {
+        if (!isScanning || !video.videoWidth || !video.videoHeight) {
             requestAnimationFrame(scanQRCode);
             return;
         }
@@ -72,8 +94,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
         const code = jsQR(imageData.data, imageData.width, imageData.height);
 
-        if (code) {
+        if (code && code.data !== lastScannedQR) {
+            lastScannedQR = code.data;
             fetchData(code.data);
+            startCountdown();
         }
 
         requestAnimationFrame(scanQRCode);
@@ -96,6 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .catch(err => {
             displayError('Fetch Error: Failed to fetch data');
+            startCountdown(); // Ensure countdown even on error
         });
     }
 
@@ -123,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function displayBadges(messages) {
         badgeContainer.innerHTML = '';
         messages.forEach(msg => {
-            const badgeClass = msg.includes('Warning') || msg.includes('Already Scanned') ? 'error' : '';
+            const badgeClass = msg.includes('Warning') || msg.includes('Already') || msg.includes('Similar') ? 'error' : '';
             const badgeHTML = `<span class="badge-card ${badgeClass}">${msg}</span>`;
             badgeContainer.insertAdjacentHTML('beforeend', badgeHTML);
         });

@@ -32,6 +32,7 @@ if (!isset($conn) || !($conn instanceof mysqli) || $conn->connect_error) {
                 <video id="video" class="w-100" autoplay></video>
                 <canvas id="canvas" style="display: none;"></canvas>
                 <div class="scanner-overlay"></div>
+                <div id="countdown" class="countdown-text text-center mt-2" style="display: none;">Scanning paused: <span id="countdownTimer">5</span>s</div>
                 <select id="cameraSelect" class="form-select mt-3"></select>
             </div>
             <div class="col-md-7 data-section">

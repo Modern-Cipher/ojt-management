@@ -26,29 +26,10 @@ if (empty($qr_code_data)) {
 }
 
 try {
-    // Check if QR code was already scanned
-    $stmt = $conn->prepare("
-        SELECT is_qr_scanned
-        FROM attendance
-        WHERE qr_code_data = ?
-    ");
-    if (!$stmt) {
-        throw new Exception('Prepare failed: ' . $conn->error);
-    }
-    $stmt->bind_param('s', $qr_code_data);
-    if (!$stmt->execute()) {
-        throw new Exception('Execute failed: ' . $stmt->error);
-    }
-    $result = $stmt->get_result();
-    $scan_status = $result->fetch_assoc();
-    $stmt->close();
-
-    $already_scanned = $scan_status && $scan_status['is_qr_scanned'] == 1;
-
-    // Fetch attendance record
+    // Check if QR code exists and its scan status
     $stmt = $conn->prepare("
         SELECT school_id, first_name, middle_name, last_name, sex, email, institute, course,
-               selfie_image_path, ip_address
+               selfie_image_path, ip_address, is_qr_scanned, scanned_timestamp
         FROM attendance
         WHERE qr_code_data = ?
     ");
@@ -67,7 +48,7 @@ try {
         throw new Exception('No attendance record found for this QR code');
     }
 
-    // Handle image path (mimic confirm.php)
+    // Handle image path
     $selfie_path = $data['selfie_image_path'] ? trim($data['selfie_image_path']) : null;
     $image_base_path = rtrim(ROOT_DIR, '/') . '/' . IMAGE_UPLOAD_DIR;
     $image_filename = $selfie_path ? basename($selfie_path) : null;
@@ -79,22 +60,22 @@ try {
     } else {
         $data['selfie_image_path'] = '../resources/placeholder.png';
         error_log('Selfie image not found. Details: ' .
+                  'QR Code: ' . $qr_code_data . ', ' .
                   'Database selfie_path: ' . ($selfie_path ?: 'NULL') . ', ' .
                   'Filename: ' . ($image_filename ?: 'N/A') . ', ' .
                   'Attempted path: ' . ($image_filename ? $image_base_path . $image_filename : 'N/A') . ', ' .
-                  'Web path: ' . ($image_filename ? $relative_web_path : '../resources/placeholder.png') . ', ' .
-                  'ROOT_DIR: ' . ROOT_DIR . ', ' .
                   'Absolute path: ' . ($absolute_path ?: 'N/A') . ', ' .
                   'File exists: ' . ($absolute_path ? (file_exists($absolute_path) ? 'Yes' : 'No') : 'N/A'));
     }
 
-    // Check IP address match
+    // Check IP address and scan status
     $scanned_ip = $_SERVER['REMOTE_ADDR'];
     $ip_match = $scanned_ip === $data['ip_address'];
+    $already_scanned = $data['is_qr_scanned'] == 1;
 
     $messages = [];
     if (!$already_scanned) {
-        // Update scan details only if not already scanned
+        // Record attendance for first scan
         $scanned_timestamp = date('Y-m-d H:i:s');
         $scanned_device_info = $_SERVER['HTTP_USER_AGENT'];
         $is_qr_scanned = 1;
@@ -116,10 +97,9 @@ try {
         $messages = ['QR Validated', 'Attendance Recorded'];
     } else {
         $messages = ['Already Scanned'];
-    }
-
-    if ($ip_match) {
-        $messages[] = 'Warning: Same IP address detected';
+        if ($ip_match) {
+            $messages[] = 'Similar Device';
+        }
     }
 
     echo json_encode([
