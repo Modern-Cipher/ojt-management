@@ -1,8 +1,12 @@
 # Student Internship Program Management System
 
-![SIPMS Logo](./resources/siplogo.png)
+<div style="display: flex; justify-content: center; align-items: center; border-radius: 50%; width: 200px; height: 200px; overflow: hidden; margin: 20px auto;">
+    <img src="./resources/siplogo.png" alt="SIPMS Logo" style="width: 100%; height: auto; display: block;">
+</div>
 
-**A full-stack web application to manage student internships, including the administration of host trainers, coordinators, and various stakeholders. Developed by Modern Cipher, a Freelance IT Developer.**
+**A full-stack web application to manage student internships, including the administration of host trainers, coordinators, and various stakeholders. Developed by Modern Cipher, a Freelance IT Services.**
+
+---
 
 ## Table of Contents
 - [Project Overview](#project-overview)
@@ -13,6 +17,8 @@
 - [Usage](#usage)
 - [Live Hosting](#live-hosting)
 - [License](#license)
+
+---
 
 ## Project Overview
 
@@ -30,6 +36,8 @@ Key functionalities include:
 - **User Profile Management**
 - **Announcements Management**
 - **Dashboard for admins and coordinators**
+
+---
 
 ## Tech Stack
 
@@ -49,6 +57,8 @@ The system is built using a combination of modern web technologies for both fron
 ### Tools & Version Control
 - **VSCode**: Code editor for development.
 - **Git**: Version control for source code management.
+
+---
 
 ## Features
 
@@ -76,6 +86,8 @@ The system is built using a combination of modern web technologies for both fron
 ### Specialized Features:
 - **Higher Education Requirements**: Trainers must submit the necessary educational documents and certifications as per the requirements that must be followed before and during the internship.
 
+---
+
 ## System Requirements
 
 To run the Student Internship Program Management System locally, you will need:
@@ -84,3 +96,5 @@ To run the Student Internship Program Management System locally, you will need:
 - **Composer**: For managing PHP dependencies
 - **MySQL**: Database management system
 - **XAMPP/WAMP/LAMP**: Local development environment (for Windows, MacOS, or Linux respectively)
+
+---
