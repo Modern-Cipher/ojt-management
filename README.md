@@ -1,6 +1,6 @@
 # Student Internship Program Management System
 
-<div style="display: flex; justify-content: center; align-items: center; border-radius: 50%; width: 200px; height: 200px; overflow: hidden; margin: 20px auto;">
+<div style="display: flex; justify-content: center; align-items: center; border-radius: 50%; width: 70px; height: 70px; overflow: hidden; margin: 20px auto;">
     <img src="./resources/siplogo.png" alt="SIPMS Logo" style="width: 100%; height: auto; display: block;">
 </div>
 
