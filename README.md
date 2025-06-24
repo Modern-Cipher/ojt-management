@@ -1,7 +1,7 @@
 # Student Internship Program Management System
 
 <div style="display: flex; justify-content: center; align-items: center; border-radius: 50%; width: 70px; height: 70px; overflow: hidden; margin: 20px auto;">
-    <img src="./resources/sipms.png" alt="SIPMS Logo" style="width: 100%; height: auto; display: block;">
+    <img src="./resources/siplogo.png" alt="SIPMS Logo" style="width: 100%; height: auto; display: block;">
 </div>
 
 **A full-stack web application to manage student internships, including the administration of host trainers, coordinators, and various stakeholders. Developed by Modern Cipher, a Freelance IT Services.**
