@@ -1,6 +1,6 @@
 # Student Internship Program Management System
 
-<div style="display: flex; justify-content: center; align-items: center; border-radius: 50%; width: 70px; height: 70px; overflow: hidden; margin: 20px auto;">
+<div style="display: flex; justify-content: center; align-items: center; border-radius: 50%; width: 50px; height: 50px; overflow: hidden; margin: 20px auto;">
     <img src="./resources/siplogo.png" alt="SIPMS Logo" style="width: 100%; height: auto; display: block;">
 </div>
 
@@ -96,5 +96,3 @@ To run the Student Internship Program Management System locally, you will need:
 - **Composer**: For managing PHP dependencies
 - **MySQL**: Database management system
 - **XAMPP/WAMP/LAMP**: Local development environment (for Windows, MacOS, or Linux respectively)
-
----
